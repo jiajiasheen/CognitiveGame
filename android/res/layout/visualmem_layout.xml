@@ -15,6 +15,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual1"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
         <ImageView
@@ -22,6 +23,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual2"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
         <ImageView
@@ -29,6 +31,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual3"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
         <ImageView
@@ -36,6 +39,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual4"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
         <ImageView
@@ -43,6 +47,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual5"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
     </LinearLayout>
@@ -58,33 +63,35 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual6"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             />
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/visual7"
             android:layout_centerVertical="true"
-
+            android:layout_marginLeft="10dp"
             />
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/visual8"
             android:layout_centerVertical="true"
-
+            android:layout_marginLeft="10dp"
             />
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/visual9"
             android:layout_centerVertical="true"
-
+            android:layout_marginLeft="10dp"
             />
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/visual10"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
             />
     </LinearLayout>
     <LinearLayout
@@ -92,20 +99,20 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-
         >
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/visual11"
             android:layout_centerVertical="true"
-
+            android:layout_marginLeft="10dp"
             />
         <ImageView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:id="@+id/visual12"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
         <ImageView
@@ -113,6 +120,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual13"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
         <ImageView
@@ -120,6 +128,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual14"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
         <ImageView
@@ -127,6 +136,7 @@
             android:layout_width="wrap_content"
             android:id="@+id/visual15"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
 
             />
     </LinearLayout>

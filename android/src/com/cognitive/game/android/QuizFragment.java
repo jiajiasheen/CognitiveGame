@@ -12,9 +12,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+
 
 /**
  * Created by Draco on 2016-11-21.
@@ -26,11 +29,12 @@ public class QuizFragment extends Fragment{
         private Integer correct = 0;
         private int nBack;
         private int hour_left = QuizActivity.hour_left;
+        private View resultView;
         //private int hour_left = 5;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-            View resultView = inflater.inflate(R.layout.quiz_layout, container, false);
+            resultView = inflater.inflate(R.layout.quiz_layout, container, false);
 
             final TextView nText = (TextView) resultView.findViewById(R.id.N_Back_Number); //animation pop up text view
             final Button nextNumBtn = (Button) resultView.findViewById(R.id.next_btn); //initialize n-back question array
@@ -52,6 +56,7 @@ public class QuizFragment extends Fragment{
                     pos++;
                     nText.setText("");
                     nText.setText(Integer.toString(numbers[pos]));
+                    nText.startAnimation(AnimationUtils.loadAnimation(resultView.getContext(), android.R.anim.slide_in_left));
                     if(pos == nBack) {
                         nextNumBtn.setVisibility(View.GONE);
                         corr_btn.setVisibility(View.VISIBLE);
@@ -107,6 +112,7 @@ public class QuizFragment extends Fragment{
             if(pos < numbers.length) {
                 textView.setText("");
                 textView.setText(Integer.toString(numbers[pos]));
+                textView.startAnimation(AnimationUtils.loadAnimation(resultView.getContext(), android.R.anim.slide_in_left));
             }
             else
                 FinishQuiz();
@@ -125,7 +131,7 @@ public class QuizFragment extends Fragment{
                     QuizActivity.accuracy_list.add(accurcy.intValue());
                     FragmentManager fragmentManager = getFragmentManager();
 
-                    if(QuizActivity.hour_left != 0){ //if still has hours, back to main story
+                    if(QuizActivity.hour_left == 5){ //if still has hours, back to main story
                         QuizFragment si = new QuizFragment();
                         FragmentTransaction ft = fragmentManager.beginTransaction();
                         ft.replace(R.id.main_interface, si);
