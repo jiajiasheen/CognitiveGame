@@ -3,4 +3,15 @@
 
     <string name="app_name">CognitiveGame</string>
 
+    <string name="login">Welcome</string>
+    <string name="brief_story">The brave traveler, trapped in a cave with a sparkling camp fire. 5 hours to go until dawn,
+    be careful about the monsters in the darkness.</string>
+    <string name="monster_query">Monster Query</string>
+    <string name="query_hints">Darkness is coming. Take your request and survive the night.</string>
+    <string name="hour_hints">%d hours before dawn</string>
+    <string name="ending_question_number">Question %d Accuracy</string>
+    <string name="ending_results">%d %%</string>
+    <string name="ending_hints">Congratulations!</string>
+    <string name="happy_ending">The dawn is coming, you survive and see the road out of the forest.</string>
+
 </resources>
