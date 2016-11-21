@@ -260,14 +260,6 @@
     <property name="IMAGE" value="walk_yuki"/>
    </properties>
   </object>
-  <object id="18" name="BARREL" type="NPC" gid="892" x="289" y="2371" width="48" height="64"/>
-  <object id="26" name="BARREL" type="NPC" gid="892" x="179.621" y="3708.46" width="48" height="64">
-   <properties>
-    <property name="IMAGE" value="walk_marisa"/>
-    <property name="SHADOW" value="true"/>
-    <property name="Z_SCRIPT" value="mytest.js"/>
-   </properties>
-  </object>
  </objectgroup>
  <layer name="treelayer" width="50" height="80">
   <data encoding="base64" compression="gzip">

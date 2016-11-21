@@ -38,7 +38,7 @@ public class MainScreen extends ScreenAdapter {
     public void show() {
         stage = new Stage(new ScalingViewport(Scaling.stretch, 2392, 1440, new OrthographicCamera()));
         camera = (OrthographicCamera) stage.getCamera();
-        camera.setToOrtho(false, 2392 / 2, 1440 / 2);
+        camera.setToOrtho(false, 1196, 720);
         Gdx.input.setInputProcessor(stage);
 
         //camera = new OrthographicCamera();
@@ -49,10 +49,6 @@ public class MainScreen extends ScreenAdapter {
 
         barrelRender = new BarrelRender(tiledMap);
         barelRegion = barrelRender.getBarrelRegion();
-
-        for(int i = 0;i < barelRegion.length;i++){
-            Gdx.app.log("Row: ", i + " is " + barelRegion[i][0] + " and " + barelRegion[i][1]);
-        }
 
         myActor = new TestActor(stage, barelRegion);
         stage.addActor(myActor);
@@ -81,8 +77,6 @@ public class MainScreen extends ScreenAdapter {
 
         if(myActor.ifHitPoint())
             cg.setQuizScreen();
-        //Gdx.app.log("Screen Position: ", Float.toString(Gdx.graphics.getWidth()) + " " + Float.toString(Gdx.graphics.getHeight()));
-        //Gdx.app.log("Objects number: ", Integer.toString(objectLayer.getObjects().getCount()));
     }
 
     @Override

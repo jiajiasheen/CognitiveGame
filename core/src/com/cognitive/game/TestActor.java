@@ -121,10 +121,10 @@ public class TestActor extends Actor {
             }
         });
 
-        imgButtonL.setPosition(20, 350);
-        imgButtonR.setPosition(340, 350);
-        imgButtonD.setPosition(190, 210);
-        imgButtonU.setPosition(190, 490);
+        imgButtonL.setPosition(60, 370);
+        imgButtonR.setPosition(210, 370);
+        imgButtonD.setPosition(135, 300);
+        imgButtonU.setPosition(135, 440);
 
     }
 
@@ -161,15 +161,13 @@ public class TestActor extends Actor {
     }
 
     public boolean ifHitPoint(){
-        boolean res = false;
         for(int i = 0;i < barelRegion.length;i++){
             int x = barelRegion[i][0];
             int y = barelRegion[i][1];
             if((actorX > x - 50) && (actorX < x + 50) && (actorY > y - 50) && (actorY < y + 50))
                 return true;
         }
-
-        return res;
+        return false;
     }
 
 }

@@ -9,8 +9,9 @@ import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-/**
+/*
  * Created by Draco on 2016-11-20.
+ * This method is used to find the object position in the tiled map
  */
 
 public class BarrelRender extends Actor{
@@ -40,9 +41,9 @@ public class BarrelRender extends Actor{
         for(MapObject obj : objLayer.getObjects()){
             TiledMapTileMapObject tobj = (TiledMapTileMapObject) obj;
             barrelRegion[index][0] = tobj.getProperties().get("x", Float.class).intValue();
-            Gdx.app.log("X Axis: ", barrelRegion[index][0] + "");
+            //Gdx.app.log("X Axis: ", barrelRegion[index][0] + "");
             barrelRegion[index][1] = tobj.getProperties().get("y", Float.class).intValue();
-            Gdx.app.log("Y Axis: ", barrelRegion[index][1] + "");
+            //Gdx.app.log("Y Axis: ", barrelRegion[index][1] + "");
             index++;
         }
         return barrelRegion;
