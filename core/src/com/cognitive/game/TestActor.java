@@ -18,7 +18,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 public class TestActor extends Actor {
 
     Stage stage;
-    CognitiveGame cg;
 
     Texture texture = new Texture(Gdx.files.internal("mario.png"));
     Texture buttonL = new Texture(Gdx.files.internal("left.png"));
@@ -32,26 +31,18 @@ public class TestActor extends Actor {
     ImageButton imgButtonU;
     float actorX = 600, actorY = 600;
 
-    enum STATE{
+    private enum STATE{
         Left, Right, Up, Down, Idel
     }
 
-    STATE state = STATE.Idel;
+    private STATE state = STATE.Idel;
 
-    public TestActor(Stage stage, CognitiveGame cg){
-        /*
-        setBounds(actorX, actorY, texture.getWidth(), texture.getHeight());
-        addListener(new InputListener(){
-            @Override
-            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
-                ((TestActor)event.getTarget()).started = true;
-                return true;
-            }
-        });
-        */
+    private int[][] barelRegion;
+
+    public TestActor(Stage stage, int[][] barelRegion){
 
         this.stage = stage;
-        this.cg = cg;
+        this.barelRegion = barelRegion;
 
         TextureRegion tr = new TextureRegion(buttonR);
         TextureRegionDrawable trd = new TextureRegionDrawable(tr);
@@ -130,10 +121,10 @@ public class TestActor extends Actor {
             }
         });
 
-        imgButtonL.setPosition(-20, 100);
-        imgButtonR.setPosition(280, 100);
-        imgButtonD.setPosition(130, -40);
-        imgButtonU.setPosition(130, 240);
+        imgButtonL.setPosition(20, 350);
+        imgButtonR.setPosition(340, 350);
+        imgButtonD.setPosition(190, 210);
+        imgButtonU.setPosition(190, 490);
 
     }
 
@@ -151,7 +142,7 @@ public class TestActor extends Actor {
             actorX -= 5;
             setButton(-5, 0);
         }
-        else if(state == STATE.Up) {
+        else if(state == STATE.Up && actorY < 3840 - texture.getHeight()) {
             actorY += 5;
             setButton(0, 5);
         }
@@ -160,16 +151,9 @@ public class TestActor extends Actor {
             setButton(0, -5);
         }
 
-        /*
-        if(actorX == 650 && actorY == 600){
-            stage.dispose();
-            cg.setQuizScreen();
-        }
-        */
-
     }
 
-    public void setButton(float x, float y){
+    private void setButton(float x, float y){
         imgButtonL.setPosition(imgButtonL.getX() + x, imgButtonL.getY() + y);
         imgButtonR.setPosition(imgButtonR.getX() + x, imgButtonR.getY() + y);
         imgButtonD.setPosition(imgButtonD.getX() + x, imgButtonD.getY() + y);
@@ -177,9 +161,15 @@ public class TestActor extends Actor {
     }
 
     public boolean ifHitPoint(){
-        if(actorX > 650 && actorX < 680 && actorY > 600 && actorY < 630)
-            return true;
-        return false;
+        boolean res = false;
+        for(int i = 0;i < barelRegion.length;i++){
+            int x = barelRegion[i][0];
+            int y = barelRegion[i][1];
+            if((actorX > x - 50) && (actorX < x + 50) && (actorY > y - 50) && (actorY < y + 50))
+                return true;
+        }
+
+        return res;
     }
 
 }

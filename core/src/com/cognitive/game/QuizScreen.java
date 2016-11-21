@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.GL20;
 
 public class QuizScreen extends ApplicationAdapter implements Screen {
 
+
     CognitiveGame cg;
 
     public QuizScreen(CognitiveGame cg){
