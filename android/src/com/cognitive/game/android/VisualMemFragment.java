@@ -58,7 +58,7 @@ public class VisualMemFragment extends Fragment {
         aBtn = (Button) resultView.findViewById(R.id.A_btn);
         bBtn = (Button) resultView.findViewById(R.id.B_btn);
         cBtn = (Button) resultView.findViewById(R.id.C_btn);
-        qus = new ImageRandomGenerator().qAndSGenerator();
+        qus = new ImageRandomGenerator().qAndSGenerator(5);
         System.out.print(Arrays.deepToString(qus));
         System.out.print("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
 /*
@@ -93,7 +93,7 @@ public class VisualMemFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                System.out.println("1111111111111111111111111");
+
                 if (result == 1){
                     correctSol();
                 }
@@ -105,7 +105,7 @@ public class VisualMemFragment extends Fragment {
         bBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("2222222222222222222222");
+
                 if (result == 2){
                     correctSol();
                 }
@@ -117,7 +117,7 @@ public class VisualMemFragment extends Fragment {
         cBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("333333333333333333333");
+
                 if (result == 3){
                     correctSol();
                 }

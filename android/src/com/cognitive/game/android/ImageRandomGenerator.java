@@ -10,15 +10,16 @@ import java.util.Collections;
 
 public class ImageRandomGenerator {
     public static int result;
+    //public static int IMAGECOUNTER
 
-    public static Integer[][] qAndSGenerator(){
+    public static Integer[][] qAndSGenerator(int n){
 
-        Integer[][] res = new Integer[4][5];
-        Integer res1[] = new Integer[5];
-        Integer res2[] = new Integer[5];
-        Integer res3[] = new Integer[5];
-        Integer res4[] = new Integer[5];
-        Integer shuff[] = new Integer[5];
+        Integer[][] res = new Integer[4][n];
+        Integer res1[] = new Integer[n];
+        Integer res2[] = new Integer[n];
+        Integer res3[] = new Integer[n];
+        Integer res4[] = new Integer[n];
+        Integer shuff[] = new Integer[n];
         ArrayList<Integer> currArr= new ArrayList<>();
         ArrayList<Integer> answer = new ArrayList<>();
 

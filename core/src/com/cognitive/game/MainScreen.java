@@ -77,6 +77,7 @@ public class MainScreen extends ScreenAdapter {
 
         if(myActor.ifHitPoint())
             cg.myGameCallBack.onStartVisualActivity();
+            //cg.myGameCallBack.onStartQuizActivity();
     }
 
     @Override
