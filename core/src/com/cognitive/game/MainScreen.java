@@ -12,23 +12,21 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 
-import java.io.Console;
-
 /*
  * Created by Draco on 2016-11-18.
  */
 
 public class MainScreen extends ScreenAdapter {
 
+    //TODO: collision detection
+    //TODO: hide on bush
+
     private Stage stage;
-    TiledMap tiledMap;
-    OrthographicCamera camera;
-    TiledMapRenderer tiledMapRenderer;
-    TestActor myActor;
-    CognitiveGame cg;
-    //MapLayer objectLayer;
-    BarrelRender barrelRender;
-    int[][] barelRegion;
+    private TiledMap tiledMap;
+    private OrthographicCamera camera;
+    private TiledMapRenderer tiledMapRenderer;
+    private Player myActor;
+    private CognitiveGame cg;
 
     public MainScreen(CognitiveGame cg){
         this.cg = cg;
@@ -47,10 +45,10 @@ public class MainScreen extends ScreenAdapter {
         tiledMap = new TmxMapLoader().load("map.tmx");
         tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
 
-        barrelRender = new BarrelRender(tiledMap);
-        barelRegion = barrelRender.getBarrelRegion();
+        BarrelRender barrelRender = new BarrelRender(tiledMap, cg.box_opened);
+        int[][] barelRegion = barrelRender.getBarrelRegion();
 
-        myActor = new TestActor(stage, barelRegion);
+        myActor = new Player(stage, barelRegion, cg.player_pos, cg.box_opened);
         stage.addActor(myActor);
         stage.addActor(myActor.imgButtonL);
         stage.addActor(myActor.imgButtonR);
@@ -75,10 +73,12 @@ public class MainScreen extends ScreenAdapter {
         stage.act(Gdx.graphics.getDeltaTime());
         stage.draw();
 
-        if(myActor.ifHitPoint())
+        if(myActor.ifHitPoint()) {
+            cg.player_pos[0] = myActor.actorX;
+            cg.player_pos[1] = myActor.actorY;
+            cg.box_opened[myActor.which_box] = true;
             cg.setQuizScreen();
-            //cg.myGameCallBack.onStartVisualActivity();
-            //cg.myGameCallBack.onStartQuizActivity();
+        }
     }
 
     @Override

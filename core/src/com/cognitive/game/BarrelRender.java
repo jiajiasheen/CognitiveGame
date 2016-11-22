@@ -27,11 +27,11 @@ public class BarrelRender extends Actor{
     //if the box is opened
     private boolean[] opened;
 
-    public BarrelRender(Map map){
+    public BarrelRender(Map map, boolean[] box_opened){
         this.barrel = new Texture(Gdx.files.internal("items2.png"));
         this.objLayer = map.getLayers().get("objects");
         this.barrelRegion = new int[objLayer.getObjects().getCount()][2];
-        this.opened = new boolean[7];
+        this.opened = box_opened;
     }
 
     @Override
@@ -43,11 +43,13 @@ public class BarrelRender extends Actor{
                 curBarrel = tmp[FRAME_ROWS - 1][7];
             else
                 curBarrel = tmp[FRAME_ROWS - 1][8];
+
             TiledMapTileMapObject tobj = (TiledMapTileMapObject) obj;
             int x = tobj.getProperties().get("x", Float.class).intValue();
             int y = tobj.getProperties().get("y", Float.class).intValue();
 
             batch.draw(curBarrel, x, y);
+            index++;
         }
     }
 

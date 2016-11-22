@@ -3,9 +3,16 @@ package com.cognitive.game;
 import com.badlogic.gdx.Game;
 
 public class CognitiveGame extends Game {
+    public float[] player_pos;
+    public boolean[] box_opened;
+
+    public CognitiveGame(float[] player_pos, boolean[] box_opened){
+        this.player_pos = player_pos;
+        this.box_opened = box_opened;
+    }
 
     public  interface MyGameCallBack{
-        public void onStartQuizActivity(int n);
+        public void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened);
         public void onStartVisualActivity();
     }
 

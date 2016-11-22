@@ -137,15 +137,13 @@ public class QuizFragment extends Fragment{
                         ft.replace(R.id.main_interface, si);
                         ft.commit();
                     }
-                    else{ //to ending if game is over
-                /*    QuizFragment ef = new QuizFragment();
-                    FragmentTransaction ft = fragmentManager.beginTransaction();
-                    ft.replace(R.id.main_interface, ef);
-                    ft.commit();
-                 */
+                    else{
                         Intent intent = new Intent (getActivity(), AndroidLauncher.class);
+                        intent.putExtra("Player", QuizActivity.player_pos);
+                        intent.putExtra("Box", QuizActivity.box_opened);
                         startActivity(intent);
 
+                        //TODO: didn't destroy current fragment, which leads wired behaviour when press back button
                     }
                 }
             });

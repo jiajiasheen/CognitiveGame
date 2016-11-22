@@ -16,6 +16,8 @@ public class QuizActivity extends Activity {
     public static ArrayList<Integer> accuracy_list;
     public static int nBack;
     public static Integer hour_left;
+    public static float[] player_pos;
+    public static boolean[] box_opened;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class QuizActivity extends Activity {
         setContentView(R.layout.main_interface);
 
         int extra = getIntent().getIntExtra("Level", 2);
+        player_pos = getIntent().getFloatArrayExtra("Player");
+        box_opened = getIntent().getBooleanArrayExtra("Box");
 
         time_consump_list = new ArrayList<>();
         accuracy_list = new ArrayList<>();

@@ -15,7 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
  * Created by Draco on 2016-11-18.
  */
 
-public class TestActor extends Actor {
+public class Player extends Actor {
 
     Stage stage;
 
@@ -34,7 +34,7 @@ public class TestActor extends Actor {
     ImageButton imgButtonU;
 
     //actor original spot
-    float actorX = 600, actorY = 600;
+    float actorX, actorY;
 
     //walking state
     private enum STATE{
@@ -57,10 +57,17 @@ public class TestActor extends Actor {
     private static int step = 0; //store the current step in the animation frame
     private static int face_dir = 0; //0 is down, 1 is up, 2 is left, 3 is right
 
-    public TestActor(Stage stage, int[][] barelRegion){
+    //locate which box is hitted
+    public int which_box;
+    private boolean[] box_opened;
+
+    public Player(Stage stage, int[][] barelRegion, float[] player_pos, boolean[] box_opened){
 
         this.stage = stage;
         this.barelRegion = barelRegion;
+        this.actorX = player_pos[0];
+        this.actorY = player_pos[1];
+        this.box_opened = box_opened;
 
         //split actor texture
         TextureRegion[][] tmp = TextureRegion.split(texture, texture.getWidth() / FRAME_COLS, texture.getHeight() / FRAME_ROWS);
@@ -153,10 +160,10 @@ public class TestActor extends Actor {
             }
         });
 
-        imgButtonL.setPosition(100, 470);
-        imgButtonR.setPosition(250, 470);
-        imgButtonD.setPosition(175, 400);
-        imgButtonU.setPosition(175, 540);
+        imgButtonL.setPosition(actorX - 500, actorY - 130);
+        imgButtonR.setPosition(actorX - 350, actorY - 130);
+        imgButtonD.setPosition(actorX - 425, actorY - 200);
+        imgButtonU.setPosition(actorX - 425, actorY - 60);
 
     }
 
@@ -199,10 +206,13 @@ public class TestActor extends Actor {
 
     public boolean ifHitPoint(){
         for(int i = 0;i < barelRegion.length;i++){
+            if(box_opened[i]) continue;
             int x = barelRegion[i][0];
             int y = barelRegion[i][1];
-            if((actorX > x - 34) && (actorX < x + 5) && (actorY > y - 5) && (actorY < y + 34))
+            if((actorX > x - 34) && (actorX < x + 5) && (actorY > y - 5) && (actorY < y + 34)) {
+                which_box = i;
                 return true;
+            }
         }
         return false;
     }

@@ -61,7 +61,7 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
         hard_level.addListener(new InputListener(){
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                cg.myGameCallBack.onStartQuizActivity(3);
+                cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened);
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -79,7 +79,7 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                cg.myGameCallBack.onStartQuizActivity(2);
+                cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened);
                 super.touchUp(event, x, y, pointer, button);
             }
         });
@@ -107,5 +107,10 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
     @Override
     public void hide() {
 
+    }
+
+    @Override
+    public void dispose() {
+        stage.dispose();
     }
 }
