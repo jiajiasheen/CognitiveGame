@@ -19,8 +19,8 @@ public class AndroidLauncher extends AndroidApplication implements CognitiveGame
 	}
 
 	@Override
-	public void onStartQuizActivity() {
-		Intent intent = new Intent (this, QuizActivity.class);
+	public void onStartQuizActivity(int n) {
+		Intent intent = new Intent (this, QuizActivity.class).putExtra("Level", n);
 		startActivity(intent);
 	}
 

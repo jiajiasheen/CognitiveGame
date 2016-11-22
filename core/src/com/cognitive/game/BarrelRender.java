@@ -3,6 +3,7 @@ package com.cognitive.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
@@ -16,23 +17,37 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class BarrelRender extends Actor{
 
-    private Texture barrel;
+    private Texture barrel; //the texture for the barrel
+    private TextureRegion curBarrel;
+    private int FRAME_COLS = 14;
+    private int FRAME_ROWS = 30;
     private int[][] barrelRegion;
     private MapLayer objLayer;
 
+    //if the box is opened
+    private boolean[] opened;
+
     public BarrelRender(Map map){
-        this.barrel = new Texture(Gdx.files.internal("mario.png"));
+        this.barrel = new Texture(Gdx.files.internal("items2.png"));
         this.objLayer = map.getLayers().get("objects");
         this.barrelRegion = new int[objLayer.getObjects().getCount()][2];
+        this.opened = new boolean[7];
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
+        TextureRegion[][] tmp = TextureRegion.split(barrel, barrel.getWidth() / FRAME_COLS, barrel.getHeight() / FRAME_ROWS);
+        int index = 0;
         for(MapObject obj : objLayer.getObjects()){
+            if(!opened[index])
+                curBarrel = tmp[FRAME_ROWS - 1][7];
+            else
+                curBarrel = tmp[FRAME_ROWS - 1][8];
             TiledMapTileMapObject tobj = (TiledMapTileMapObject) obj;
             int x = tobj.getProperties().get("x", Float.class).intValue();
             int y = tobj.getProperties().get("y", Float.class).intValue();
-            batch.draw(barrel, x, y);
+
+            batch.draw(curBarrel, x, y);
         }
     }
 

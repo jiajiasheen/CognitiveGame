@@ -5,7 +5,7 @@ import com.badlogic.gdx.Game;
 public class CognitiveGame extends Game {
 
     public  interface MyGameCallBack{
-        public void onStartQuizActivity();
+        public void onStartQuizActivity(int n);
         public void onStartVisualActivity();
     }
 

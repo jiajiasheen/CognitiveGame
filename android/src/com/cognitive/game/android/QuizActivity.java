@@ -21,9 +21,12 @@ public class QuizActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_interface);
+
+        int extra = getIntent().getIntExtra("Level", 2);
+
         time_consump_list = new ArrayList<>();
         accuracy_list = new ArrayList<>();
-        nBack = 2;
+        nBack = extra;
         hour_left = 5;
         if(savedInstanceState == null){
             FragmentManager fragmentManager = getFragmentManager();

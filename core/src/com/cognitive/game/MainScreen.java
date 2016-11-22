@@ -38,7 +38,7 @@ public class MainScreen extends ScreenAdapter {
     public void show() {
         stage = new Stage(new ScalingViewport(Scaling.stretch, 2392, 1440, new OrthographicCamera()));
         camera = (OrthographicCamera) stage.getCamera();
-        camera.setToOrtho(false, 1196, 720);
+        camera.setToOrtho(false, 1087, 655);
         Gdx.input.setInputProcessor(stage);
 
         //camera = new OrthographicCamera();
@@ -76,7 +76,8 @@ public class MainScreen extends ScreenAdapter {
         stage.draw();
 
         if(myActor.ifHitPoint())
-            cg.myGameCallBack.onStartVisualActivity();
+            cg.setQuizScreen();
+            //cg.myGameCallBack.onStartVisualActivity();
             //cg.myGameCallBack.onStartQuizActivity();
     }
 

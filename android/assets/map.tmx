@@ -222,6 +222,12 @@
  <tileset firstgid="896" name="rpg_maker_vx___flowers_and_pots_by_ayene_chan-d7kq66n" tilewidth="48" tileheight="48" tilecount="117" columns="13">
   <image source="map/rpg_maker_vx___flowers_and_pots_by_ayene_chan-d7kq66n.png" width="624" height="432"/>
  </tileset>
+ <tileset firstgid="1013" name="items" tilewidth="34" tileheight="34" tilecount="14" columns="14">
+  <image source="map/items.png" width="509" height="34"/>
+ </tileset>
+ <tileset firstgid="1027" name="items2" tilewidth="34" tileheight="34" tilecount="420" columns="14">
+  <image source="map/items2.png" width="476" height="1020"/>
+ </tileset>
  <layer name="layer1" width="50" height="80">
   <data encoding="base64" compression="gzip">
    H4sIAAAAAAAAA9WaW3LaMBSGOaTT0EkX0EyhaZeQvJUtNAkLCMwwTRaAPZPbAgILppm8Vpqcv/5RwUiyZewHjcAGrKPv3MVQer2RGcNUc7/X+2PmVzPWdL3uZ52bcZFwHhg5vpjx3Yyv/fdnrhM8KxkHnSHHqcoCNj/NGHeIx7FZ+2czPqg8dn4z1+/NeOwQj6HK8k3lYR1bd4jHLzMuzbiSdx2zPI5Ulle9P+4Aj2szHsyYyKaOHal+zc343QEePNsxIlkgx5PyajMPd4YPYx4LZdIVHphHavcf++96d6dydIkH4gbHedhIl3hgzQPHRprkAR96KfGxmOU4Id2aNMjDxmDrQ6HPVXlwztV0/LDfwf5V4XFMtj7UmJiah9Un69/Xshmfq/AY6u9ZGX6onaTmgVg11tcziY/B/2xBGYDLWT89D/h4K8uzGbnE28c5MUAeD//bhH1AlqXKgVwieO9UBluPfKL5LZJDjL9CzmflmUqhayF7h7iBcUL23nQ8B5sVyYL77Ae2fZ9rkTo4VI3nrGdPtHa2pbIcdrCl1j1UfgU9g65BHusLbmR7zoS6ifN3cLk4AI9tfB7kf7lc++F6Y0Q6hth+CB5l873DCPZyveX6gJgcmsc+/4Z1j53ryLVOSbfaxGOXHT3qdc61WA7UJcgf28CjbOZci+Xg123jsW12eaBej823DsnD+oKJFDEePsvWvqH9kyb2fy+bLb2g0Hq9if33+QzX6+B0EfCMNvAYShETz6g+DInvbeGB2tD6XNSHIeckbeCBnhb8FnxXl+zD5o02r2T/yzlKV3hY35TLZg8FdtJ2+7B6hH6eZfEiRf7FI6TWrHv/scYrZ7087NptLblQFlMzbmUz7+dcrCke7v5OpeitvOh6F7T2Gx32c0viUeVcqo79x9pXuqaZvr/R9yu6N9X7ud5fkVxVzqViZOd+tZUh0zVibUu9ttDXC72f0f7b4erSxOPZdfKY63rQy8J67vR9ruvEfWYxJfncXkuVOUb2ue77TGWY6HXUrDMpdAtrhi2sSLZMqttFVR6Zrs3VaZwt7Broe0HWvCYuvjK7NoF1+PR5+TXLaWWCXTVxHoXcAfoNPwSdio3nbl9yVw+yLh44K8ilsAn4l6r5Fc6dl55sq/DAvuWy6Weq5lfgjDjJvaFU9gFZrE7Bz/jW0LvuWRaIk/DRN7RPqfwVeoTsq6rwQK4Lm7uVovedsj5HDoLY4OtjyhjDb2Ht8Ge+thfDA/a+0r17rMiDuWTSXH6FfAQsfL+37zPc0479308oD/jekL3z/e2VxP/PxFdm2EYm4ee1ITEqNq77ysw+En7XNydqEw/s11SKuojjVh08UEul5mH1iWsN1Kz74rtvbEJNnpoH9ovj+0L2+6+Y/U3BA3mQ6+PhLxdS7r9i9jcFD9g482BOyB13+f6y3+a6JqZvFcIDOoUcjv9X4soYygN5O3JF35omlgd6IOzjoW/7arqy3+b/2GGfwCXkP14+snI+BxuBDDPZ7DdUjR/oQ7xIWM4Qml+h9/csm32fst5TCHPIsO83Y+MH8hL0C9Hz8Ml7fXkgXwjJpUN4cP2ZyWYf0GfPQnjwf6FS+CvE7jI7qMoDPhG+JIW/Yh0K9e0+n+GaOZfCv9fNI5P4HpPvZ7mf5eYOdcYPPqeomwc/C0xCahwfWcF8KoVfT8GD+xihcd13r7jHHlojhD5jGfEM372aKw/obQoe0KmYutBH1m28U/HIpDhfrNNfIQbG5DwxPPispy5/BQ7Iq1PGDzu751l1+SvO3WJynlh/hf57XTwgRyyHGPvIpch/Qp75F2Iiz2qAPgAA
@@ -243,18 +249,18 @@
   </data>
  </layer>
  <objectgroup name="objects">
-  <object id="4" name="BARREL" type="NPC" gid="892" x="2289" y="3376" width="48" height="64"/>
-  <object id="5" name="BARREL" type="NPC" gid="892" x="1432" y="1581" width="48" height="64"/>
-  <object id="6" name="BARREL" type="NPC" gid="892" x="1929" y="962" width="48" height="64"/>
-  <object id="8" name="BARREL" type="NPC" gid="892" x="624" y="852" width="48" height="64"/>
-  <object id="11" name="BARREL" type="NPC" gid="892" x="24" y="1405" width="48" height="64"/>
-  <object id="15" name="BARREL" type="NPC" gid="892" x="1071" y="2968" width="60" height="64">
+  <object id="4" name="BARREL" type="NPC" gid="892" x="2276" y="3396" width="34" height="34"/>
+  <object id="5" name="BARREL" type="NPC" gid="892" x="1432" y="1581" width="34" height="34"/>
+  <object id="6" name="BARREL" type="NPC" gid="892" x="1934" y="958" width="34" height="34"/>
+  <object id="8" name="BARREL" type="NPC" gid="892" x="626" y="862" width="34" height="34"/>
+  <object id="11" name="BARREL" type="NPC" gid="892" x="336" y="1488" width="34" height="34"/>
+  <object id="15" name="BARREL" type="NPC" gid="892" x="1065" y="2964" width="34" height="34">
    <properties>
     <property name="AUTO_SCRIPT" value="s0-8.js"/>
     <property name="IMAGE" value="renko_l"/>
    </properties>
   </object>
-  <object id="16" name="BARREL" type="NPC" gid="892" x="21" y="3027" width="48" height="64">
+  <object id="16" name="BARREL" type="NPC" gid="892" x="210" y="3215" width="34" height="34">
    <properties>
     <property name="ID" value="16"/>
     <property name="IMAGE" value="walk_yuki"/>
