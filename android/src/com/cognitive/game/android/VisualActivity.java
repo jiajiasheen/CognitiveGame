@@ -13,6 +13,8 @@ public class VisualActivity extends Activity {
     public static int IMAGECOUNTER;
     public static float[] player_pos_visual;
     public static boolean[] box_opened_visual;
+    public static boolean logged;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,7 @@ public class VisualActivity extends Activity {
         int extra =getIntent().getIntExtra("ImageLevel",5);
         player_pos_visual = getIntent().getFloatArrayExtra("Player");
         box_opened_visual = getIntent().getBooleanArrayExtra("Box");
+        logged = getIntent().getBooleanExtra("Logged", true);
         IMAGECOUNTER = extra;
         if(savedInstanceState == null){
             FragmentManager fragmentManager = getFragmentManager();

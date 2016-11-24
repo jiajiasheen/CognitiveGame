@@ -260,7 +260,9 @@ public class DSSTFragment extends Fragment {
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                 intent.putExtra("Player",DSSTActivity.player_pos_dsst);
                 intent.putExtra("Box", DSSTActivity.box_opened_dsst);
+                intent.putExtra("Logged", DSSTActivity.logged);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
         builder.setCancelable(false);

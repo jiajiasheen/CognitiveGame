@@ -141,7 +141,9 @@ public class QuizFragment extends Fragment{
                         Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                         intent.putExtra("Player", QuizActivity.player_pos);
                         intent.putExtra("Box", QuizActivity.box_opened);
+                        intent.putExtra("Logged", QuizActivity.logged);
                         startActivity(intent);
+                        getActivity().finish();
 
                         //TODO: didn't destroy current fragment, which leads wired behaviour when press back button
                     }

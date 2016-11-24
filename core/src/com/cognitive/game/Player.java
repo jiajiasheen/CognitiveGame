@@ -194,7 +194,7 @@ public class Player extends Actor {
             actorY -= 5;
             setButton(0, -5);
         }
-
+        Gdx.app.log("===Actor position: ", actorX + " " + actorY);
     }
 
     private void setButton(float x, float y){
@@ -202,6 +202,12 @@ public class Player extends Actor {
         imgButtonR.setPosition(imgButtonR.getX() + x, imgButtonR.getY() + y);
         imgButtonD.setPosition(imgButtonD.getX() + x, imgButtonD.getY() + y);
         imgButtonU.setPosition(imgButtonU.getX() + x, imgButtonU.getY() + y);
+    }
+
+    public int ifHitNPC(){
+        if(actorX > 660 && actorX < 680 && actorY < 750 && actorY > 720)
+            return 1;
+        return 0;
     }
 
     public boolean ifHitPoint(){

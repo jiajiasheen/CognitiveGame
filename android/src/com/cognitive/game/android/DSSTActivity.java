@@ -12,12 +12,14 @@ import android.os.Bundle;
 public class DSSTActivity extends Activity {
     public static float[] player_pos_dsst;
     public static boolean[] box_opened_dsst;
+    public static boolean logged;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dsst_activity);
         player_pos_dsst = getIntent().getFloatArrayExtra("Player");
         box_opened_dsst = getIntent().getBooleanArrayExtra("Box");
+        logged = getIntent().getBooleanExtra("Logged", true);
         if(savedInstanceState == null){
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

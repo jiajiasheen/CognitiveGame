@@ -154,7 +154,9 @@ public class VisualMemFragment extends Fragment {
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                 intent.putExtra("Player",VisualActivity.player_pos_visual);
                 intent.putExtra("Box", VisualActivity.box_opened_visual);
+                intent.putExtra("Logged", VisualActivity.logged);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
         builder.setCancelable(false);
@@ -176,7 +178,9 @@ public class VisualMemFragment extends Fragment {
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                 intent.putExtra("Player",VisualActivity.player_pos_visual);
                 intent.putExtra("Box", VisualActivity.box_opened_visual);
+                intent.putExtra("Logged", VisualActivity.logged);
                 startActivity(intent);
+                getActivity().finish();
             }
         });
         builder.setCancelable(false);
