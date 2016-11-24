@@ -13,7 +13,8 @@ public class CognitiveGame extends Game {
 
     public  interface MyGameCallBack{
         public void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened);
-        public void onStartVisualActivity();
+        public void onStartVisualActivity(int n, float[] player_pos, boolean[] box_opened);
+        public void onStartDSSTActivity(float[] player_pos, boolean[] box_opened);
     }
 
     public static MyGameCallBack myGameCallBack;

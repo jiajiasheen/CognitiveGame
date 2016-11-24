@@ -10,11 +10,17 @@ import android.os.Bundle;
  */
 
 public class VisualActivity extends Activity {
+    public static int IMAGECOUNTER;
+    public static float[] player_pos_visual;
+    public static boolean[] box_opened_visual;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.visual_activity);
-
+        int extra =getIntent().getIntExtra("ImageLevel",5);
+        player_pos_visual = getIntent().getFloatArrayExtra("Player");
+        box_opened_visual = getIntent().getBooleanArrayExtra("Box");
+        IMAGECOUNTER = extra;
         if(savedInstanceState == null){
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

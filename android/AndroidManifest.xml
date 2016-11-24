@@ -4,7 +4,7 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="24" />
+    <uses-sdk android:minSdkVersion="14" android:targetSdkVersion="24" />
 
     <application
         android:allowBackup="true"
@@ -23,6 +23,8 @@
         </activity>
         <activity android:name=".QuizActivity"/>
         <activity android:name=".VisualActivity"/>
+        <activity android:name=".DSSTActivity"/>
+
     </application>
 
 </manifest>
