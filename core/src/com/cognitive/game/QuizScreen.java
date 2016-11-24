@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -61,7 +62,14 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
         hard_level.addListener(new InputListener(){
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened);
+                //if (MainScreen.boxCounter == 4 || MainScreen.boxCounter == 5) {
+                if (true){
+                    cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened);
+                    //cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened);
+                }
+                else {
+                    cg.myGameCallBack.onStartVisualActivity(5, cg.player_pos, cg.box_opened);
+                }
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -79,7 +87,14 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened);
+                System.out.print("**********************");
+                System.out.println(MainScreen.boxCounter);
+                if (MainScreen.boxCounter == 4 || MainScreen.boxCounter == 5) {
+                    cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened);
+                }
+                else {
+                    cg.myGameCallBack.onStartVisualActivity(4, cg.player_pos, cg.box_opened);
+                }
                 super.touchUp(event, x, y, pointer, button);
             }
         });

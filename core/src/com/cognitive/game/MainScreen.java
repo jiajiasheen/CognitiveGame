@@ -27,6 +27,7 @@ public class MainScreen extends ScreenAdapter {
     private TiledMapRenderer tiledMapRenderer;
     private Player myActor;
     private CognitiveGame cg;
+    public static int boxCounter;
 
     public MainScreen(CognitiveGame cg){
         this.cg = cg;
@@ -77,6 +78,7 @@ public class MainScreen extends ScreenAdapter {
             cg.player_pos[0] = myActor.actorX;
             cg.player_pos[1] = myActor.actorY;
             cg.box_opened[myActor.which_box] = true;
+            boxCounter = myActor.which_box;
             cg.setQuizScreen();
         }
     }

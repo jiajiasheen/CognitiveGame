@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Arrays;
 
@@ -22,15 +23,19 @@ import static com.cognitive.game.android.ImageRandomGenerator.result;
 public class VisualMemFragment extends Fragment {
     private View resultView;
     private ImageView img1, img2, img3, img4, img5;
+    private int imageCounter;
     private ImageView[] img = new ImageView[15];
     private Integer[][] qus = new Integer[4][5];
     private Button readyBtn, aBtn, bBtn, cBtn;
     private int[] resource ={R.drawable.mc1, R.drawable.mc2, R.drawable.mc3, R.drawable.mc4, R.drawable.mc5,
             R.drawable.mc6,R.drawable.mc7,R.drawable.mc8,R.drawable.mc9,R.drawable.mc10};
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         resultView = inflater.inflate(R.layout.visualmem_layout, container, false);
+        imageCounter = VisualActivity.IMAGECOUNTER;
 /*
         img1 = (ImageView) resultView.findViewById(R.id.visual1);
         img2 = (ImageView) resultView.findViewById(R.id.visual2);
@@ -58,7 +63,7 @@ public class VisualMemFragment extends Fragment {
         aBtn = (Button) resultView.findViewById(R.id.A_btn);
         bBtn = (Button) resultView.findViewById(R.id.B_btn);
         cBtn = (Button) resultView.findViewById(R.id.C_btn);
-        qus = new ImageRandomGenerator().qAndSGenerator(5);
+        qus = new ImageRandomGenerator().qAndSGenerator(imageCounter);
         System.out.print(Arrays.deepToString(qus));
         System.out.print("aaaaaaaaaaaaaaaaaaaaaaaaaaa");
 /*
@@ -68,7 +73,7 @@ public class VisualMemFragment extends Fragment {
         img4.setImageResource(resource[qus[0][3]]);
         img5.setImageResource(resource[qus[0][4]]);
 */
-        for (int i = 0; i < 5; i ++){
+        for (int i = 0; i < imageCounter; i ++){
             img[i].setImageResource(resource[qus[0][i]]);
         }
 
@@ -78,12 +83,17 @@ public class VisualMemFragment extends Fragment {
             public void onClick(View v) {
                 int count = 0;
                 for (int j = 1;j < 4; j ++ ){
-                    for (int k = 0; k < 5; k ++){
+                    for (int k = 0; k < imageCounter; k ++){
                         img[count].setImageResource(resource[qus[j][k]]);
                         count ++;
                     }
+                    if (imageCounter == 4){
+                        count++;
+                    }
                 }
                 readyBtn.setVisibility(View.GONE);
+                TextView tv = (TextView) resultView.findViewById(R.id.textview_instruction);
+                tv.setText("Please Select the right sequence");
                 aBtn.setVisibility(View.VISIBLE);
                 bBtn.setVisibility(View.VISIBLE);
                 cBtn.setVisibility(View.VISIBLE);
@@ -142,6 +152,8 @@ public class VisualMemFragment extends Fragment {
                 ft.commit();
                 */
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
+                intent.putExtra("Player",VisualActivity.player_pos_visual);
+                intent.putExtra("Box", VisualActivity.box_opened_visual);
                 startActivity(intent);
             }
         });
@@ -162,6 +174,8 @@ public class VisualMemFragment extends Fragment {
                 ft.commit();
                 */
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
+                intent.putExtra("Player",VisualActivity.player_pos_visual);
+                intent.putExtra("Box", VisualActivity.box_opened_visual);
                 startActivity(intent);
             }
         });
