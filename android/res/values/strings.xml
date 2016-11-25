@@ -14,5 +14,6 @@
     <string name="ending_hints">Congratulations!</string>
     <string name="happy_ending">The dawn is coming, you survive and see the road out of the forest.</string>
     <string name="title_activity_log_in">LogInActivity</string>
+    <string name="title_activity_end">EndActivity</string>
 
 </resources>

@@ -5,6 +5,8 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -14,6 +16,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
+
+import java.util.List;
 
 /*
  * Created by Draco on 2016-11-18.
@@ -31,6 +35,12 @@ public class MainScreen extends ScreenAdapter {
     private Player myActor;
     private CognitiveGame cg;
     public static int boxCounter;
+
+    //for pop up dialog
+    private NinePatch border;
+    private BitmapFont bitmapFont;
+    private List<String[]> dialog;
+    private int currentSize;
 
     public MainScreen(CognitiveGame cg){
         this.cg = cg;
@@ -78,8 +88,12 @@ public class MainScreen extends ScreenAdapter {
         stage.draw();
 
         if(myActor.ifHitNPC() == 1){
-
             Gdx.app.log("==Hitted: ", "NPC hitted");
+        }
+
+        if(myActor.ifHitNPC() == 2) {
+            if(myActor.diamondN == 4)
+                cg.myGameCallBack.onStartEndActivity();
         }
 
         if(myActor.ifHitPoint()) {
@@ -87,6 +101,7 @@ public class MainScreen extends ScreenAdapter {
             cg.player_pos[1] = myActor.actorY;
             cg.box_opened[myActor.which_box] = true;
             boxCounter = myActor.which_box;
+            Gdx.app.log("====Box Number: ", boxCounter + "");
             cg.setQuizScreen();
         }
     }

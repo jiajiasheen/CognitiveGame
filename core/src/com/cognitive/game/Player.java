@@ -25,6 +25,7 @@ public class Player extends Actor {
     Texture buttonR = new Texture(Gdx.files.internal("right.png"));
     Texture buttonD = new Texture(Gdx.files.internal("down.png"));
     Texture buttonU = new Texture(Gdx.files.internal("up.png"));
+    Texture di_img = new Texture(Gdx.files.internal("diamond.png"));
 
     //define image buttons
     //TODO: try to use touchPad instead of imageButton
@@ -50,6 +51,13 @@ public class Player extends Actor {
     //actor frames
     private int FRAME_COLS = 3;
     private int FRAME_ROWS = 4;
+    private int ITEM_FRAME_COLS = 14;
+    private int ITEM_FRAME_ROWS = 30;
+
+    TextureRegion diamond;
+
+    public int diamondN;
+
     TextureRegion[] walkFrames;
     //Animation walkAnimation;
     //float stateTime;
@@ -68,6 +76,15 @@ public class Player extends Actor {
         this.actorX = player_pos[0];
         this.actorY = player_pos[1];
         this.box_opened = box_opened;
+        diamondN = 0;
+
+        for(int i = 0;i < box_opened.length;i++){
+            if(box_opened[i])
+                diamondN++;
+        }
+
+        //Diamond
+        diamond = TextureRegion.split(di_img, di_img.getWidth() / ITEM_FRAME_COLS, di_img.getHeight() / ITEM_FRAME_ROWS)[15][1];
 
         //split actor texture
         TextureRegion[][] tmp = TextureRegion.split(texture, texture.getWidth() / FRAME_COLS, texture.getHeight() / FRAME_ROWS);
@@ -165,12 +182,14 @@ public class Player extends Actor {
         imgButtonD.setPosition(actorX - 425, actorY - 200);
         imgButtonU.setPosition(actorX - 425, actorY - 60);
 
+
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         currentFrame = walkFrames[face_dir * 3 + step];
         batch.draw(currentFrame, actorX, actorY);
+        drawDiamond(batch);
     }
 
     @Override
@@ -194,7 +213,7 @@ public class Player extends Actor {
             actorY -= 5;
             setButton(0, -5);
         }
-        Gdx.app.log("===Actor position: ", actorX + " " + actorY);
+        //Gdx.app.log("===Actor position: ", actorX + " " + actorY);
     }
 
     private void setButton(float x, float y){
@@ -207,6 +226,9 @@ public class Player extends Actor {
     public int ifHitNPC(){
         if(actorX > 660 && actorX < 680 && actorY < 750 && actorY > 720)
             return 1;
+        else if(actorX > 1335 && actorX < 1355 && actorY < 1650 && actorY > 1630)
+            return 2;
+        //TODO: another NPC is 1345 1640
         return 0;
     }
 
@@ -232,6 +254,12 @@ public class Player extends Actor {
                 step++;
             else
                 step = 0;
+        }
+    }
+
+    private void drawDiamond(Batch batch){
+        for(int i = 0;i < diamondN;i++){
+            batch.draw(diamond, actorX + 550 - i * 45 , actorY - 200);
         }
     }
 

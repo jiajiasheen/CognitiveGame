@@ -71,4 +71,12 @@ public class AndroidLauncher extends AndroidApplication implements CognitiveGame
 		startActivity(intent);
         finish();
 	}
+
+    @Override
+    public void onStartEndActivity() {
+        Intent intent = new Intent (this, EndActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
 }

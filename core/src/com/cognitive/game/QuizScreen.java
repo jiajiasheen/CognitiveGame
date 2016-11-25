@@ -16,9 +16,6 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.FillViewport;
-import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 /*
  * Created by Draco on 2016-11-20.
@@ -62,14 +59,16 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
         hard_level.addListener(new InputListener(){
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                //if (MainScreen.boxCounter == 4 || MainScreen.boxCounter == 5) {
-                if (true){
+
+                //hard and 6th box, dsst
+                if(MainScreen.boxCounter == 6)
                     cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened, cg.logged);
-                    //cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened);
-                }
-                else {
+                else if(MainScreen.boxCounter == 5 || MainScreen.boxCounter == 1)
+                    cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened, cg.logged);
+                else if(MainScreen.boxCounter == 4)
                     cg.myGameCallBack.onStartVisualActivity(5, cg.player_pos, cg.box_opened, cg.logged);
-                }
+                else
+                    cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened, cg.logged);
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -89,12 +88,16 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 System.out.print("**********************");
                 System.out.println(MainScreen.boxCounter);
-                if (MainScreen.boxCounter == 4 || MainScreen.boxCounter == 5) {
+
+                if(MainScreen.boxCounter == 6)
+                    cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened, cg.logged);
+                else if(MainScreen.boxCounter == 5 || MainScreen.boxCounter == 1)
                     cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened, cg.logged);
-                }
-                else {
+                else if(MainScreen.boxCounter == 4)
                     cg.myGameCallBack.onStartVisualActivity(4, cg.player_pos, cg.box_opened, cg.logged);
-                }
+                else
+                    cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened, cg.logged);
+
                 super.touchUp(event, x, y, pointer, button);
             }
         });

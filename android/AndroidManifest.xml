@@ -33,7 +33,10 @@
         <activity android:name=".DSSTActivity" />
         <activity
             android:name=".LogInActivity"
-            android:label="@string/title_activity_log_in"></activity>
+            android:label="@string/title_activity_log_in" />
+        <activity
+            android:name=".EndActivity"
+            android:label="@string/title_activity_end"></activity>
     </application>
 
 </manifest>
