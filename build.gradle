@@ -59,6 +59,9 @@ project(":android") {
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-armeabi-v7a"
         natives "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-x86"
+        compile  "com.android.support:cardview-v7:24.2.1"
+        compile "com.android.support:recyclerview-v7:24.2.1"
+
 
     }
 }
@@ -90,6 +93,7 @@ project(":html") {
         compile "com.badlogicgames.gdx:gdx-backend-gwt:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion:sources"
         compile "com.badlogicgames.gdx:gdx-box2d-gwt:$gdxVersion:sources"
+
     }
 }
 

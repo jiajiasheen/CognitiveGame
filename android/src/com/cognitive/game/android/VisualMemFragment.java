@@ -151,6 +151,11 @@ public class VisualMemFragment extends Fragment {
                 ft.replace(R.id.main_interface, mst);
                 ft.commit();
                 */
+                //AndroidLauncher.finalRes.put("Visual Memory Test", "Correct");
+                //AndroidLauncher.finalRes.add("Visual Memory Test");
+                //AndroidLauncher.finalRes.add("Correct");
+                AndroidLauncher.finalResTit.add("Visual Memory Test");
+                AndroidLauncher.finalResVal.add("Correct");
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                 intent.putExtra("Player",VisualActivity.player_pos_visual);
                 intent.putExtra("Box", VisualActivity.box_opened_visual);
@@ -175,6 +180,11 @@ public class VisualMemFragment extends Fragment {
                 ft.replace(R.id.main_interface, mst);
                 ft.commit();
                 */
+                //AndroidLauncher.finalRes.put("Visual Memory Test", "Wrong");
+                //AndroidLauncher.finalRes.add("Visual Memory Test");
+                //AndroidLauncher.finalRes.add("Correct");
+                AndroidLauncher.finalResTit.add("Visual Memory Test");
+                AndroidLauncher.finalResVal.add("Wrong");
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                 intent.putExtra("Player",VisualActivity.player_pos_visual);
                 intent.putExtra("Box", VisualActivity.box_opened_visual);
