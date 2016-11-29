@@ -3,6 +3,7 @@ package com.cognitive.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -27,6 +28,7 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
     private CognitiveGame cg; //for set screen purpose
     private Stage stage;
     private OrthographicCamera camera;
+    private Music openBoxMus;
 
     public QuizScreen(CognitiveGame cg){
         this.cg = cg;
@@ -60,6 +62,7 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 
+
                 //hard and 6th box, dsst
                 if(MainScreen.boxCounter == 6)
                     cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened, cg.logged);
@@ -88,6 +91,7 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 System.out.print("**********************");
                 System.out.println(MainScreen.boxCounter);
+
 
                 if(MainScreen.boxCounter == 6)
                     cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened, cg.logged);

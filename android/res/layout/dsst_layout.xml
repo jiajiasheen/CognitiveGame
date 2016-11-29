@@ -1,47 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@android:color/white"
     android:layout_height="match_parent">
 <LinearLayout
     android:layout_width="match_parent"
     android:orientation="horizontal"
+    android:layout_centerHorizontal="true"
     android:layout_height="30dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:text="Hint"
+        android:text="Rule"
         android:fontFamily="monospace"
         android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
         android:textColor="@android:color/holo_purple"
         android:textStyle="normal|bold" />
 
 </LinearLayout>
 
-   <LinearLayout
+   <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="80dp"
-       android:layout_marginTop="35dp"
+       android:layout_marginTop="30dp"
        android:orientation="horizontal">
 
        <TextView
+           android:id="@+id/text_num"
            android:layout_width="match_parent"
-           android:layout_height="match_parent"
-
-           android:text="0  1  2  3  4  5  6  7  8  9
-                        ~  !  @  #  $  %  ^  {   *   ( "
-
-
+           android:layout_height="40dp"
+           android:layout_centerHorizontal="true"
+           android:text="0  1  2  3  4  5  6  7  8  9"
            android:textSize="24sp"
            android:textStyle="normal|bold"
            android:textColor="?android:attr/colorPressedHighlight"
-           android:textAlignment="viewStart"
            android:fontFamily="casual" />
+       <TextView
+           android:id="@+id/text_symbol"
+            android:layout_below="@+id/text_num"
+           android:layout_width="match_parent"
+           android:layout_height="40dp"
+           android:text="~  !  @  #  $  %  ^  {   *   ( "
+           android:layout_gravity="center_horizontal"
+           android:textSize="24sp"
+           android:textStyle="normal|bold"
+           android:textColor="?android:attr/colorPressedHighlight"
+           android:fontFamily="casual"
+           />
 
 
-   </LinearLayout>
+   </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,7 +68,7 @@
             android:id="@+id/textView111"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:textSize="36sp"  />
+            android:textSize="36sp" />
         <TextView
             android:text="3"
             android:layout_width="30dp"
@@ -138,6 +150,7 @@
             android:id="@+id/textView120"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+
             android:textSize="36sp"  />
 
 </LinearLayout>
@@ -268,7 +281,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_marginTop="510dp"
+        android:layout_marginTop="240dp"
         android:layout_alignParentLeft="true"
         >
         <TextView
@@ -277,7 +290,7 @@
             android:layout_height="50dp"
             android:id="@+id/textView168"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="45dp"
+            android:layout_marginLeft="180dp"
             android:textSize="36sp"
             android:textColor="@android:color/background_dark" />
 
@@ -288,7 +301,7 @@
             android:textSize="36sp"
             android:id="@+id/textView169"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="40dp"
             android:textColor="@android:color/background_dark" />
         <TextView
             android:text="c"
@@ -326,7 +339,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:orientation="horizontal"
-        android:layout_marginTop="580dp"
+        android:layout_marginTop="290dp"
+
         android:layout_alignParentLeft="true">
 
         <TextView
@@ -336,7 +350,7 @@
             android:id="@+id/textView171"
             android:textSize="36sp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="45dp"
+            android:layout_marginLeft="180dp"
             android:textColor="@android:color/background_dark" />
         <TextView
             android:text="g"
