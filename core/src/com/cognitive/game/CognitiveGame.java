@@ -9,6 +9,7 @@ public class CognitiveGame extends Game {
     public boolean[] box_opened;
     public boolean logged;
     private Music music_level1;
+    private Music touch_box;
 
     public CognitiveGame(float[] player_pos, boolean[] box_opened, boolean logged){
         this.player_pos = player_pos;
@@ -32,11 +33,11 @@ public class CognitiveGame extends Game {
     @Override
     public void create() {
         setMainScreen();
-        /*
-        music_level1 = Gdx.audio.newMusic(Gdx.files.internal("dragon_city.ogg"));
-        music_level1.setLooping(true);
-        music_level1.play();
-        */
+
+        //music_level1 = Gdx.audio.newMusic(Gdx.files.internal("dragon_city.ogg"));
+        //music_level1.setLooping(true);
+        //music_level1.play();
+
     }
 
     public void setMainScreen(){
@@ -45,6 +46,9 @@ public class CognitiveGame extends Game {
     }
 
     public void setQuizScreen(){
+        touch_box = Gdx.audio.newMusic(Gdx.files.internal("touch_box.ogg"));
+        touch_box.setLooping(false);
+        touch_box.play();
         QuizScreen quizScreen = new QuizScreen(this);
         setScreen(quizScreen);
     }

@@ -3,6 +3,7 @@ package com.cognitive.game.android;
 import android.app.Activity;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import java.util.ArrayList;
@@ -19,11 +20,15 @@ public class QuizActivity extends Activity {
     public static float[] player_pos;
     public static boolean[] box_opened;
     public static boolean logged;
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_interface);
+        mediaPlayer = MediaPlayer.create(this, R.raw.box_open);
+        mediaPlayer.setLooping(false);
+        mediaPlayer.start();
 
         int extra = getIntent().getIntExtra("Level", 2);
         player_pos = getIntent().getFloatArrayExtra("Player");

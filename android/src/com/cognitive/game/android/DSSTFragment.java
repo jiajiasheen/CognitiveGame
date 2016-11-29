@@ -55,6 +55,7 @@ public class DSSTFragment extends Fragment {
             textTest.add((TextView) dsstView.findViewById(R.id.textView120));
             for (int i = 0; i < 10; i ++){
                 textTest.get(i).setText(String.valueOf(testNumArray[i]));
+                textTest.get(i).setVisibility(VISIBLE);
             }
 
             selection[0] = (TextView) dsstView.findViewById(R.id.textView168);
