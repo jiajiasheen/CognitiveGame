@@ -34,6 +34,12 @@ public class Player extends Actor {
     ImageButton imgButtonD;
     ImageButton imgButtonU;
 
+    //boolean values for direction moving
+    private boolean right = true;
+    private boolean left = true;
+    private boolean down = true;
+    private boolean up = true;
+
     //actor original spot
     float actorX, actorY;
 
@@ -44,6 +50,7 @@ public class Player extends Actor {
 
     //initial state
     private STATE state = STATE.Idel;
+    private STATE lastState = STATE.Idel;
 
     //get objects region from main screen
     private int[][] barelRegion;
@@ -54,28 +61,30 @@ public class Player extends Actor {
     private int ITEM_FRAME_COLS = 14;
     private int ITEM_FRAME_ROWS = 30;
 
-    TextureRegion diamond;
+    private TextureRegion diamond;
 
     public int diamondN;
 
-    TextureRegion[] walkFrames;
+    private TextureRegion[] walkFrames;
     //Animation walkAnimation;
     //float stateTime;
-    TextureRegion currentFrame;
+    private TextureRegion currentFrame;
     private static int step = 0; //store the current step in the animation frame
     private static int face_dir = 0; //0 is down, 1 is up, 2 is left, 3 is right
 
     //locate which box is hitted
     public int which_box;
     private boolean[] box_opened;
+    private boolean[][] barriers;
 
-    public Player(Stage stage, int[][] barelRegion, float[] player_pos, boolean[] box_opened){
+    public Player(Stage stage, int[][] barelRegion, float[] player_pos, boolean[] box_opened, boolean[][] barriers){
 
         this.stage = stage;
         this.barelRegion = barelRegion;
         this.actorX = player_pos[0];
         this.actorY = player_pos[1];
         this.box_opened = box_opened;
+        this.barriers = barriers; //get obstacles on the map
         diamondN = 0;
 
         for(int i = 0;i < box_opened.length;i++){
@@ -121,6 +130,7 @@ public class Player extends Actor {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                lastState = state;
                 state = STATE.Idel;
                 super.touchUp(event, x, y, pointer, button);
             }
@@ -136,6 +146,7 @@ public class Player extends Actor {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                lastState = state;
                 state = STATE.Idel;
                 super.touchUp(event, x, y, pointer, button);
             }
@@ -157,6 +168,7 @@ public class Player extends Actor {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                lastState = state;
                 state = STATE.Idel;
                 super.touchUp(event, x, y, pointer, button);
             }
@@ -172,6 +184,7 @@ public class Player extends Actor {
 
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                lastState = state;
                 state = STATE.Idel;
                 super.touchUp(event, x, y, pointer, button);
             }
@@ -194,25 +207,34 @@ public class Player extends Actor {
 
     @Override
     public void act(float delta) {
-        if(state == STATE.Right && actorX < Gdx.graphics.getWidth() - currentFrame.getRegionWidth()) {
+        checkMovable(actorX, actorY);
+
+        Gdx.app.log("=====Moving States:", "last state: " + lastState + " " + "current state: " + state);
+
+        if(state == STATE.Right && actorX < Gdx.graphics.getWidth() - currentFrame.getRegionWidth() && right) {
+            lastState = STATE.Right;
             animationSet(3, face_dir);
             actorX += 5;
             setButton(5, 0);
-        }else if(state == STATE.Left && actorX > 20) {
+        }else if(state == STATE.Left && actorX > 20 && left) {
+            lastState = STATE.Left;
             animationSet(2, face_dir);
             actorX -= 5;
             setButton(-5, 0);
         }
-        else if(state == STATE.Up && actorY < 3840 - currentFrame.getRegionHeight()) {
+        else if(state == STATE.Up && actorY < 3840 - currentFrame.getRegionHeight() && up) {
+            lastState = STATE.Up;
             animationSet(1, face_dir);
             actorY += 5;
             setButton(0, 5);
         }
-        else if(state == STATE.Down && actorY > 20) {
+        else if(state == STATE.Down && actorY > 20 && down) {
+            lastState = STATE.Down;
             animationSet(0, face_dir);
             actorY -= 5;
             setButton(0, -5);
         }
+        stateReset();
         //Gdx.app.log("===Actor position: ", actorX + " " + actorY);
     }
 
@@ -226,9 +248,8 @@ public class Player extends Actor {
     public int ifHitNPC(){
         if(actorX > 660 && actorX < 680 && actorY < 750 && actorY > 720)
             return 1;
-        else if(actorX > 1335 && actorX < 1355 && actorY < 1650 && actorY > 1630)
+        else if(actorX > 1330 && actorX < 1360 && actorY < 1660 && actorY > 1620)
             return 2;
-        //TODO: another NPC is 1345 1640
         return 0;
     }
 
@@ -261,6 +282,26 @@ public class Player extends Actor {
         for(int i = 0;i < diamondN;i++){
             batch.draw(diamond, actorX + 550 - i * 45 , actorY - 200);
         }
+    }
+
+    private void checkMovable(float x, float y){
+        if(barriers[(int) x / 48][(int) y / 48]){
+            if(state == STATE.Right && lastState == STATE.Right)
+                right = false;
+            else if(state == STATE.Left && lastState == STATE.Left)
+                left = false;
+            else if(state == STATE.Up && lastState == STATE.Up)
+                up = false;
+            else if(state == STATE.Down && lastState == STATE.Down)
+                down = false;
+        }
+    }
+
+    private void stateReset(){
+        right = true;
+        left = true;
+        up = true;
+        down = true;
     }
 
 }

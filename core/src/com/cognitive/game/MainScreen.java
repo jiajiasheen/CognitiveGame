@@ -1,19 +1,21 @@
 package com.cognitive.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.ScreenAdapter;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.NinePatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
+import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Scaling;
 import com.badlogic.gdx.utils.viewport.ScalingViewport;
 
@@ -36,21 +38,29 @@ public class MainScreen extends ScreenAdapter {
     private CognitiveGame cg;
     public static int boxCounter;
 
-    //for pop up dialog
-    private NinePatch border;
-    private BitmapFont bitmapFont;
-    private List<String[]> dialog;
-    private int currentSize;
+    //for dialog and fonts
+    public Window dialogWindow;
+    public BitmapFont font;
 
     public MainScreen(CognitiveGame cg){
         this.cg = cg;
     }
+
+    //barriers regions
+    private boolean[][] barriers;
 
     @Override
     public void show() {
         stage = new Stage(new ScalingViewport(Scaling.stretch, 2392, 1440, new OrthographicCamera()));
         camera = (OrthographicCamera) stage.getCamera();
         camera.setToOrtho(false, 1087, 655);
+
+        barriers = new boolean[50][80];
+
+        font = new BitmapFont(Gdx.files.internal("fonts/text.fnt"));
+
+        setWindow();
+
         Gdx.input.setInputProcessor(stage);
 
         //camera = new OrthographicCamera();
@@ -62,13 +72,17 @@ public class MainScreen extends ScreenAdapter {
         BarrelRender barrelRender = new BarrelRender(tiledMap, cg.box_opened);
         int[][] barelRegion = barrelRender.getBarrelRegion();
 
-        myActor = new Player(stage, barelRegion, cg.player_pos, cg.box_opened);
+        //set barriers
+        setBarriers();
+
+        myActor = new Player(stage, barelRegion, cg.player_pos, cg.box_opened, barriers);
+        stage.addActor(barrelRender);
         stage.addActor(myActor);
         stage.addActor(myActor.imgButtonL);
         stage.addActor(myActor.imgButtonR);
         stage.addActor(myActor.imgButtonD);
         stage.addActor(myActor.imgButtonU);
-        stage.addActor(barrelRender);
+        //stage.addActor(dialogWindow);
 
         //tiledMapRenderer.setView(camera);
     }
@@ -103,6 +117,33 @@ public class MainScreen extends ScreenAdapter {
             boxCounter = myActor.which_box;
             Gdx.app.log("====Box Number: ", boxCounter + "");
             cg.setQuizScreen();
+        }
+    }
+
+    private void setWindow(){
+        TextureRegionDrawable WindowDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("badlogic.jpg"))));
+        Window.WindowStyle style = new Window.WindowStyle(font, Color.WHITE, WindowDrawable);
+        dialogWindow = new Window("Game", style);
+        dialogWindow.setWidth(Gdx.graphics.getWidth()/5.0f);
+        dialogWindow.setHeight(Gdx.graphics.getHeight()/5.0f);
+
+        dialogWindow.setPosition(100,80);
+
+        dialogWindow.setMovable(true);
+    }
+
+    //check all the cells if there are obstacles in them
+    private void setBarriers(){
+        TiledMapTileLayer obs1 = (TiledMapTileLayer) tiledMap.getLayers().get("obstacle");
+        TiledMapTileLayer obs2 = (TiledMapTileLayer) tiledMap.getLayers().get("obstacle2");
+
+        for(int i = 0;i < 50;i++){
+            for(int j = 0;j < 80;j++){
+                if(obs1.getCell(i, j) != null)
+                    barriers[i][j] = true;
+                if(obs2.getCell(i,j) != null)
+                    barriers[i][j] = true;
+            }
         }
     }
 
