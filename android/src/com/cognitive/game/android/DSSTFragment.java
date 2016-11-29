@@ -247,6 +247,11 @@ public class DSSTFragment extends Fragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Your Time is Up");
         builder.setMessage(finalAccuracy);
+        //AndroidLauncher.finalRes.put("DSST", finalAccuracy);
+        //AndroidLauncher.finalRes.add("Digital Symbol Substitution Test");
+        //AndroidLauncher.finalRes.add("Accuracy: " + finalAccuracy);
+        AndroidLauncher.finalResTit.add("Digital Symbol Substitution Test");
+        AndroidLauncher.finalResVal.add("Accuracy: " + finalAccuracy);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {

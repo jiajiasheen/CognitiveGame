@@ -9,11 +9,19 @@ import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.cognitive.game.CognitiveGame;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 public class AndroidLauncher extends AndroidApplication implements CognitiveGame.MyGameCallBack {
 
 	private float[] player_pos = new float[]{600, 600};
 	private boolean[] box_opened = new boolean[7];
     private boolean logged = false;
+	//public static Map<String, String> finalRes = new HashMap<String, String>();
+	//public static ArrayList<String> finalRes = new ArrayList<String>();
+	public static ArrayList<String> finalResTit = new ArrayList<String>();
+	public static ArrayList<String> finalResVal = new ArrayList<String>();
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {

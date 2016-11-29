@@ -90,6 +90,8 @@ eclipse {
         buildCommand "com.android.ide.eclipse.adt.PreCompilerBuilder"
         buildCommand "org.eclipse.jdt.core.javabuilder"
         buildCommand "com.android.ide.eclipse.adt.ApkBuilder"
+        buildCommand "com.android.support:appcompet-v7:24.2.1"
+        buildCommand "com.android.support:design:24.2.1"
     }
 }
 

@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
@@ -30,6 +32,9 @@ public class QuizFragment extends Fragment{
         private int nBack;
         private int hour_left = QuizActivity.hour_left;
         private View resultView;
+        private long startTime;
+        private long consumingTime;
+
         //private int hour_left = 5;
 
         @Override
@@ -46,13 +51,14 @@ public class QuizFragment extends Fragment{
             numbers = new QuestionRandomGenerator().generator(nBack);
             Log.i("===Nums array length: ", numbers.length + "");
             Log.i("===Backs: ", nBack + "");
-            //nText.animateText(Integer.toString(numbers[pos]));
+
             nText.setText(Integer.toString(numbers[pos]));
 
             //click event for next number button
             nextNumBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    startTime = System.currentTimeMillis();
                     pos++;
                     nText.setText("");
                     nText.setText(Integer.toString(numbers[pos]));
@@ -86,9 +92,9 @@ public class QuizFragment extends Fragment{
                 public void onClick(View v) {
                     if(numbers[pos] != numbers[pos - nBack]) {
                         correct++;
-                        Log.i("===correct", correct+"" + " numbers last: " + numbers[pos - nBack] + " number this: " + numbers[pos] +"");
+
                     }
-                    Log.i("correct", correct+"" + " numbers last: " + numbers[pos - nBack] + " number this: " + numbers[pos] +"");
+
                     updateTextView(nText);
                 }
             });
@@ -110,18 +116,27 @@ public class QuizFragment extends Fragment{
         private void updateTextView(TextView textView){
             pos++;
             if(pos < numbers.length) {
+
                 textView.setText("");
                 textView.setText(Integer.toString(numbers[pos]));
                 textView.startAnimation(AnimationUtils.loadAnimation(resultView.getContext(), android.R.anim.slide_in_left));
             }
-            else
+            else {
+                consumingTime = System.currentTimeMillis() - startTime;
                 FinishQuiz();
+            }
         }
 
         private void FinishQuiz(){
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("Summary of this quiz");
-            builder.setMessage(correct.toString() + " correct among " + (numbers.length - nBack) + "");
+            builder.setMessage(correct.toString() + " correct among " + (numbers.length - nBack) + "" + "  time consuming: " + consumingTime / 1000 + " seconds");
+            //AndroidLauncher.finalRes.put(String.valueOf(nBack) + "Back",
+                    //correct.toString() + " / " + (numbers.length - nBack) + "" + "  time consuming: " + consumingTime / 1000 + " seconds");
+            //AndroidLauncher.finalRes.add(String.valueOf(nBack) + "Back");
+            //AndroidLauncher.finalRes.add(correct.toString() + "/" + (numbers.length - nBack) + "  time consuming: " + consumingTime / 1000 + " seconds");
+            AndroidLauncher.finalResTit.add(String.valueOf(nBack) + "Back");
+            AndroidLauncher.finalResVal.add(correct.toString() + "/" + (numbers.length - nBack) + "  time consuming: " + consumingTime / 1000 + " seconds");
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -138,6 +153,8 @@ public class QuizFragment extends Fragment{
                         ft.commit();
                     }
                     else{
+
+
                         Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                         intent.putExtra("Player", QuizActivity.player_pos);
                         intent.putExtra("Box", QuizActivity.box_opened);
@@ -171,6 +188,7 @@ public class QuizFragment extends Fragment{
             switch (hour){
                 case 5:
                     generateHint(context);
+
                     break;
 
                 case 4:
