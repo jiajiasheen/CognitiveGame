@@ -59,7 +59,7 @@ public class MainScreen extends ScreenAdapter {
 
         barriers = new boolean[50][80];
 
-        InstructionDisplay instr = new InstructionDisplay();
+        InstructionDisplay instr = new InstructionDisplay("text", 0.5f, "CLICK ME!", 625, 850);
 
         //setWindow();
 
@@ -86,7 +86,7 @@ public class MainScreen extends ScreenAdapter {
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 cg.player_pos[0] = myActor.actorX;
                 cg.player_pos[1] = myActor.actorY;
-                cg.myGameCallBack.onStartInstructionActivity(cg.player_pos, cg.box_opened, cg.logged);
+                cg.myGameCallBack.onStartInstructionActivity(cg.player_pos, cg.box_opened, cg.logged, cg.coins);
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -98,7 +98,7 @@ public class MainScreen extends ScreenAdapter {
 
         guard.setPosition(670, 750);
 
-        myActor = new Player(stage, barelRegion, cg.player_pos, cg.box_opened, barriers);
+        myActor = new Player(stage, barelRegion, cg.player_pos, cg.box_opened, barriers, cg.coins);
         stage.addActor(barrelRender);
         stage.addActor(myActor);
         stage.addActor(guard);

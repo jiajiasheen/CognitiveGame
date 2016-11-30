@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -40,6 +41,10 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
         camera = (OrthographicCamera) stage.getCamera();
         camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
 
+        InstructionDisplay moreGold = new InstructionDisplay("sans", 2f, "MAKE YOUR CHOICE", stage.getWidth() / 2 - 600, stage.getHeight() / 2 + 500);
+        //InstructionDisplay moreDif = new InstructionDisplay("sans", 2f, "Much Harder The Question Inside It", stage.getWidth() / 2 - 700, stage.getHeight() / 2 + 350);
+        //InstructionDisplay moreLoss = new InstructionDisplay("sans", 2f, "Even Less Gold If Answer Is Incorrect", stage.getWidth() / 2 - 700, stage.getHeight() / 2 + 150);
+
         Texture ez_box = new Texture(Gdx.files.internal("easy_treasure.png"));
         Texture hd_box = new Texture(Gdx.files.internal("hard_treasure.png"));
         Texture ez_box_clicked = new Texture(Gdx.files.internal("easy_treasure_clicked.png"));
@@ -55,7 +60,7 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
         TextureRegionDrawable ez_clicked_d = new TextureRegionDrawable(ez_rg_clicked);
         TextureRegionDrawable hd_clicked_d = new TextureRegionDrawable(hd_rg_clicked);
 
-        final ImageButton hard_level = new ImageButton(hd_d, hd_clicked_d);
+        ImageButton hard_level = new ImageButton(hd_d, hd_clicked_d);
         ImageButton easy_level = new ImageButton(ez_d, ez_clicked_d);
 
         hard_level.addListener(new InputListener(){
@@ -65,13 +70,13 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
 
                 //hard and 6th box, dsst
                 if(MainScreen.boxCounter == 6)
-                    cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened, cg.logged);
+                    cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened, cg.logged, cg.coins);
                 else if(MainScreen.boxCounter == 5 || MainScreen.boxCounter == 1)
-                    cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened, cg.logged);
+                    cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened, cg.logged, cg.coins);
                 else if(MainScreen.boxCounter == 4)
-                    cg.myGameCallBack.onStartVisualActivity(5, cg.player_pos, cg.box_opened, cg.logged);
+                    cg.myGameCallBack.onStartVisualActivity(5, cg.player_pos, cg.box_opened, cg.logged, cg.coins);
                 else
-                    cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened, cg.logged);
+                    cg.myGameCallBack.onStartQuizActivity(3, cg.player_pos, cg.box_opened, cg.logged, cg.coins);
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -94,21 +99,22 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
 
 
                 if(MainScreen.boxCounter == 6)
-                    cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened, cg.logged);
+                    cg.myGameCallBack.onStartDSSTActivity(cg.player_pos, cg.box_opened, cg.logged, cg.coins);
                 else if(MainScreen.boxCounter == 5 || MainScreen.boxCounter == 1)
-                    cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened, cg.logged);
+                    cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened, cg.logged, cg.coins);
                 else if(MainScreen.boxCounter == 4)
-                    cg.myGameCallBack.onStartVisualActivity(4, cg.player_pos, cg.box_opened, cg.logged);
+                    cg.myGameCallBack.onStartVisualActivity(4, cg.player_pos, cg.box_opened, cg.logged, cg.coins);
                 else
-                    cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened, cg.logged);
+                    cg.myGameCallBack.onStartQuizActivity(2, cg.player_pos, cg.box_opened, cg.logged, cg.coins);
 
                 super.touchUp(event, x, y, pointer, button);
             }
         });
 
-        hard_level.setPosition(stage.getWidth() / 2 - hd_box.getWidth(), stage.getHeight() / 2);
-        easy_level.setPosition(stage.getWidth() / 2 + ez_box.getWidth(), stage.getHeight() / 2);
+        hard_level.setPosition(stage.getWidth() / 2 - hd_box.getWidth() - 180, stage.getHeight() / 2 - 300);
+        easy_level.setPosition(stage.getWidth() / 2 + ez_box.getWidth() - 180, stage.getHeight() / 2 - 300);
 
+        stage.addActor(moreGold);
         stage.addActor(hard_level);
         stage.addActor(easy_level);
         Gdx.input.setInputProcessor(stage);

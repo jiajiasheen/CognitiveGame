@@ -82,7 +82,9 @@ public class Player extends Actor {
 
     private BitmapFont font;
 
-    public Player(Stage stage, int[][] barelRegion, float[] player_pos, boolean[] box_opened, boolean[][] barriers){
+    private int coins; //store the score
+
+    public Player(Stage stage, int[][] barelRegion, float[] player_pos, boolean[] box_opened, boolean[][] barriers, int coins){
 
         this.stage = stage;
         this.barelRegion = barelRegion;
@@ -90,6 +92,7 @@ public class Player extends Actor {
         this.actorY = player_pos[1];
         this.box_opened = box_opened;
         this.barriers = barriers; //get obstacles on the map
+        this.coins = coins;
         diamondN = 0;
 
         for(int i = 0;i < box_opened.length;i++){
@@ -298,8 +301,7 @@ public class Player extends Actor {
 
     private void drawGold(Batch batch){
         batch.draw(gold, actorX - 460, actorY + 390);
-        String score = "10";
-        font.draw(batch, "X " + score, actorX - 400, actorY + 430);
+        font.draw(batch, "X " + coins, actorX - 400, actorY + 430);
     }
 
     private void checkMovable(float x, float y){

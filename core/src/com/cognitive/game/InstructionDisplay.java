@@ -12,15 +12,22 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class InstructionDisplay extends Actor {
 
     private BitmapFont font;
+    private String text;
+    private float posX;
+    private float posY;
 
-    public InstructionDisplay(){
-        font = new BitmapFont(Gdx.files.internal("fonts/text.fnt"));
-        font.getData().setScale(0.5f);
-        Gdx.app.log("====BITMAPFONT: ", font.getXHeight() + "");
+    public InstructionDisplay(String style, float scale, String text, float posX, float posY){
+        font = new BitmapFont(Gdx.files.internal("fonts/" + style + ".fnt"));
+        font.getData().setScale(scale);
+        this.text = text;
+        this.posX = posX;
+        this.posY = posY;
+        //Gdx.app.log("====BITMAPFONT: ", font.getXHeight() + "");
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
-        font.draw(batch, "CLICK ME!", 625, 850);
+        font.draw(batch, text, posX, posY);
+        //625 850
     }
 }

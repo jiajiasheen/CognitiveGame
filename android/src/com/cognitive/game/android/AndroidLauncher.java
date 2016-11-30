@@ -18,6 +18,7 @@ public class AndroidLauncher extends AndroidApplication implements CognitiveGame
 	private float[] player_pos = new float[]{600, 600};
 	private boolean[] box_opened = new boolean[7];
     private boolean logged = false;
+    private int coins = 0;
 	//public static Map<String, String> finalRes = new HashMap<String, String>();
 	//public static ArrayList<String> finalRes = new ArrayList<String>();
 	public static ArrayList<String> finalResTit = new ArrayList<String>();
@@ -36,6 +37,9 @@ public class AndroidLauncher extends AndroidApplication implements CognitiveGame
         if(getIntent().getBooleanArrayExtra("Box") != null)
             box_opened = getIntent().getBooleanArrayExtra("Box");
 
+        if(getIntent().getIntExtra("Coins", 0) != 0)
+            coins = getIntent().getIntExtra("Coins", 0);
+
         if(!logged){
             Intent log_in = new Intent(this, LogInActivity.class);
             startActivity(log_in);
@@ -43,49 +47,53 @@ public class AndroidLauncher extends AndroidApplication implements CognitiveGame
         }
 
 		AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-		CognitiveGame cognitiveGame = new CognitiveGame(player_pos, box_opened, logged);
+		CognitiveGame cognitiveGame = new CognitiveGame(player_pos, box_opened, logged, coins);
 		cognitiveGame.setMyGameCallBack(this);
 		initialize(cognitiveGame, config);
 
 	}
 
     @Override
-    public void onStartInstructionActivity(float[] player_pos, boolean[] box_opened, boolean logged) {
+    public void onStartInstructionActivity(float[] player_pos, boolean[] box_opened, boolean logged, int coins) {
         Intent intent = new Intent(this, InstructionActivity.class);
         intent.putExtra("Player", player_pos);
         intent.putExtra("Box", box_opened);
         intent.putExtra("Logged", logged);
+        intent.putExtra("Coins", coins);
         startActivity(intent);
         finish();
     }
 
     @Override
-	public void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged) {
+	public void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged, int coins) {
 		Intent intent = new Intent (this, QuizActivity.class).putExtra("Level", n);
 		intent.putExtra("Player", player_pos);
 		intent.putExtra("Box", box_opened);
         intent.putExtra("Logged", logged);
+        intent.putExtra("Coins", coins);
 		startActivity(intent);
         finish();
 	}
 
 	@Override
-	public void onStartVisualActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged) {
+	public void onStartVisualActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged, int coins) {
 		Intent intent = new Intent (this, VisualActivity.class);
 		intent.putExtra("ImageLevel",n);
 		intent.putExtra("Player", player_pos);
 		intent.putExtra("Box", box_opened);
         intent.putExtra("Logged", logged);
+        intent.putExtra("Coins", coins);
 		startActivity(intent);
         finish();
 	}
 
 	@Override
-	public void onStartDSSTActivity(float[] player_pos, boolean[] box_opened, boolean logged) {
+	public void onStartDSSTActivity(float[] player_pos, boolean[] box_opened, boolean logged, int coins) {
 		Intent intent = new Intent (this, DSSTActivity.class);
 		intent.putExtra("Player", player_pos);
 		intent.putExtra("Box", box_opened);
         intent.putExtra("Logged", logged);
+        intent.putExtra("Coins", coins);
 		startActivity(intent);
         finish();
 	}

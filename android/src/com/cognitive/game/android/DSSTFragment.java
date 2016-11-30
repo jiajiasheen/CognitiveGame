@@ -267,6 +267,7 @@ public class DSSTFragment extends Fragment {
                 intent.putExtra("Player",DSSTActivity.player_pos_dsst);
                 intent.putExtra("Box", DSSTActivity.box_opened_dsst);
                 intent.putExtra("Logged", DSSTActivity.logged);
+                intent.putExtra("Coins", DSSTActivity.coins);
                 startActivity(intent);
                 getActivity().finish();
             }

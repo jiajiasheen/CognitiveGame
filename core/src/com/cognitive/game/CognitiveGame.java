@@ -5,23 +5,25 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 
 public class CognitiveGame extends Game {
+    public int coins;
     public float[] player_pos;
     public boolean[] box_opened;
     public boolean logged;
     private Music music_level1;
     private Music touch_box;
 
-    public CognitiveGame(float[] player_pos, boolean[] box_opened, boolean logged){
+    public CognitiveGame(float[] player_pos, boolean[] box_opened, boolean logged, int coins){
         this.player_pos = player_pos;
         this.box_opened = box_opened;
         this.logged = logged;
+        this.coins = coins;
     }
 
     public  interface MyGameCallBack{
-        void onStartInstructionActivity(float[] player_pos, boolean[] box_opened, boolean logged);
-        void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged);
-        void onStartVisualActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged);
-        void onStartDSSTActivity(float[] player_pos, boolean[] box_opened, boolean logged);
+        void onStartInstructionActivity(float[] player_pos, boolean[] box_opened, boolean logged, int coins);
+        void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged, int coins);
+        void onStartVisualActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged, int coins);
+        void onStartDSSTActivity(float[] player_pos, boolean[] box_opened, boolean logged, int coins);
         void onStartEndActivity();
     }
 
@@ -34,7 +36,6 @@ public class CognitiveGame extends Game {
     @Override
     public void create() {
         setMainScreen();
-
         //music_level1 = Gdx.audio.newMusic(Gdx.files.internal("dragon_city.ogg"));
         //music_level1.setLooping(true);
         //music_level1.play();

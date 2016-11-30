@@ -14,6 +14,7 @@ public class DSSTActivity extends Activity {
     public static float[] player_pos_dsst;
     public static boolean[] box_opened_dsst;
     public static boolean logged;
+    public static int coins;
     private MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class DSSTActivity extends Activity {
         player_pos_dsst = getIntent().getFloatArrayExtra("Player");
         box_opened_dsst = getIntent().getBooleanArrayExtra("Box");
         logged = getIntent().getBooleanExtra("Logged", true);
+        coins = getIntent().getIntExtra("Coins", 0);
         if(savedInstanceState == null){
             FragmentManager fragmentManager = getFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

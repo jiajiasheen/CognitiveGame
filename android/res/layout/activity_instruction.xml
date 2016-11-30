@@ -51,12 +51,22 @@
         android:typeface="serif" />
 
     <Button
+        android:id="@+id/next_instr"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:text="MORE TIPS!"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
         android:id="@+id/instr_btn"
         android:layout_width="120dp"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="20dp"
         android:text="GET IT!"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
 
 </RelativeLayout>
