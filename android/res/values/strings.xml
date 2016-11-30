@@ -17,12 +17,12 @@
     <string name="title_activity_end">EndActivity</string>
     <string name="instruction_content">Finally you are awake. You were misled by the dark magic in this forest and as you are trapped here,
         there is no way leading you outside this place unless you could find four missing rubies. Those rubies are hidden in treasure boxes
-        somewhere in the forest. You will be asked to take some challenges when opening the boxes, and you will get gold coins as rewards as well.
-        You should find another guard in the forest once you find all the rubies.
+        somewhere in the forest. You will be asked to take some challenges when opening the boxes, and you will get gold as rewards as well.
+        You should find another guard to help you out in the forest once you find all the rubies.
     </string>
 
-    <string name="box_tips">IMPORTANT NOTICE! When you find the treasure spots in the forest, you will find two different boxes in front of you.
-    One golden and one silver. You will get more coins by opening golden box but you will face harder challenges. It is possible that you get fewer
-    coins by opening golden box if your answer is incorrect. Make your own choices. Good luck!</string>
+    <string name="box_tips">IMPORTANT NOTICE! When you find the treasure spots, you will find two different boxes in front of you.
+    One golden and one silver. You will get more gold by opening golden box but you will face harder challenges. It is possible that you get less
+    gold by opening golden box if your answer is incorrect. Make your own choices. Good luck!</string>
 
 </resources>
