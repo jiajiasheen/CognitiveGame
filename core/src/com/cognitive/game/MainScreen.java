@@ -14,7 +14,13 @@ import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Scaling;
@@ -28,8 +34,7 @@ import java.util.List;
 
 public class MainScreen extends ScreenAdapter {
 
-    //TODO: collision detection
-    //TODO: hide on bush
+    //TODO: FUTURE WORK hide on bush
 
     private Stage stage;
     private TiledMap tiledMap;
@@ -49,7 +54,6 @@ public class MainScreen extends ScreenAdapter {
 
     //barriers regions
     private boolean[][] barriers;
-    private SpriteBatch spriteBatch;
 
     @Override
     public void show() {
@@ -77,17 +81,36 @@ public class MainScreen extends ScreenAdapter {
         //set barriers
         setBarriers();
 
+        //set guard button
+        Texture guardPNG = new Texture(Gdx.files.internal("guard.png"));
+        TextureRegion guardRegion = TextureRegion.split(guardPNG, guardPNG.getWidth() / 12, guardPNG.getHeight() / 8)[0][1];
+        ImageButton guard = new ImageButton(new TextureRegionDrawable(guardRegion));
+        guard.addListener(new InputListener(){
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                cg.myGameCallBack.onStartInstructionActivity(cg.player_pos, cg.box_opened, cg.logged);
+                super.touchUp(event, x, y, pointer, button);
+            }
+
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+        });
+
+        guard.setPosition(670, 750);
+
         myActor = new Player(stage, barelRegion, cg.player_pos, cg.box_opened, barriers);
         stage.addActor(barrelRender);
         stage.addActor(myActor);
+        stage.addActor(guard);
+        stage.addActor(instr);
         stage.addActor(myActor.imgButtonL);
         stage.addActor(myActor.imgButtonR);
         stage.addActor(myActor.imgButtonD);
         stage.addActor(myActor.imgButtonU);
-        stage.addActor(instr);
         //stage.addActor(dialogWindow);
 
-        //tiledMapRenderer.setView(camera);
     }
 
     @Override
@@ -123,7 +146,7 @@ public class MainScreen extends ScreenAdapter {
         }
     }
 
-
+    // TODO: FUTURE WORK set pop up dialog
     private void setWindow(){
         TextureRegionDrawable WindowDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("badlogic.jpg"))));
         Window.WindowStyle style = new Window.WindowStyle(font, Color.WHITE, WindowDrawable);

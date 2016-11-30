@@ -209,7 +209,7 @@ public class Player extends Actor {
     public void act(float delta) {
         checkMovable(actorX, actorY);
 
-        Gdx.app.log("=====Moving States:", "last state: " + lastState + " " + "current state: " + state);
+        //Gdx.app.log("=====Moving States:", "last state: " + lastState + " " + "current state: " + state);
 
         if(state == STATE.Right && actorX < Gdx.graphics.getWidth() - currentFrame.getRegionWidth() && right) {
             lastState = STATE.Right;

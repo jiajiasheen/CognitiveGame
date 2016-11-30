@@ -28,21 +28,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".QuizActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".VisualActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".DSSTActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".ResultActivity"
-            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".QuizActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".VisualActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".DSSTActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ResultActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".LogInActivity"
             android:label="@string/title_activity_log_in"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".EndActivity"
-            android:screenOrientation="landscape"></activity>
+            android:screenOrientation="landscape" />
+        <activity android:name=".InstructionActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

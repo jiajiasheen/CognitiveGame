@@ -15,5 +15,10 @@
     <string name="happy_ending">The dawn is coming, you survive and see the road out of the forest.</string>
     <string name="title_activity_log_in">LogInActivity</string>
     <string name="title_activity_end">EndActivity</string>
+    <string name="instruction_content">Finally you are awake. You were misled by the dark magic in this forest and as you are trapped here,
+        there is no way leading you outside this place unless you could find four missing rubies. Those rubies are hidden in treasure boxes
+        somewhere in the forest. You will be asked to take some challenges when opening the boxes, and you will get gold coins as rewards as well.
+        You should find another guard in the forest once you find all the rubies. Good luck!
+    </string>
 
 </resources>

@@ -18,10 +18,11 @@ public class CognitiveGame extends Game {
     }
 
     public  interface MyGameCallBack{
-        public void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged);
-        public void onStartVisualActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged);
-        public void onStartDSSTActivity(float[] player_pos, boolean[] box_opened, boolean logged);
-        public void onStartEndActivity();
+        void onStartInstructionActivity(float[] player_pos, boolean[] box_opened, boolean logged);
+        void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged);
+        void onStartVisualActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged);
+        void onStartDSSTActivity(float[] player_pos, boolean[] box_opened, boolean logged);
+        void onStartEndActivity();
     }
 
     public static MyGameCallBack myGameCallBack;

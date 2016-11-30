@@ -49,7 +49,17 @@ public class AndroidLauncher extends AndroidApplication implements CognitiveGame
 
 	}
 
-	@Override
+    @Override
+    public void onStartInstructionActivity(float[] player_pos, boolean[] box_opened, boolean logged) {
+        Intent intent = new Intent(this, InstructionActivity.class);
+        intent.putExtra("Player", player_pos);
+        intent.putExtra("Box", box_opened);
+        intent.putExtra("Logged", logged);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
 	public void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged) {
 		Intent intent = new Intent (this, QuizActivity.class).putExtra("Level", n);
 		intent.putExtra("Player", player_pos);
@@ -86,5 +96,7 @@ public class AndroidLauncher extends AndroidApplication implements CognitiveGame
         startActivity(intent);
         finish();
     }
+
+
 
 }
