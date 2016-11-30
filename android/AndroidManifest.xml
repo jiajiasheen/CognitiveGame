@@ -42,7 +42,6 @@
             android:screenOrientation="landscape"/>
         <activity
             android:name=".EndActivity"
-            android:label="@string/title_activity_end"
             android:screenOrientation="landscape"></activity>
     </application>
 

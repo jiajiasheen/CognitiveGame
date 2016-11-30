@@ -4,29 +4,33 @@
     android:layout_width="match_parent"
     android:background="@android:color/white"
     android:layout_height="match_parent">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:orientation="horizontal"
-    android:layout_centerHorizontal="true"
-    android:layout_height="30dp">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerVertical="true"
-        android:text="Rule"
-        android:fontFamily="monospace"
-        android:textSize="24sp"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@android:color/holo_purple"
-        android:textStyle="normal|bold" />
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/rule_space">
 
-</LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rule"
+            android:fontFamily="monospace"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/holo_blue_dark"
+            android:textStyle="normal|bold" />
+
+    </LinearLayout>
 
    <RelativeLayout
+       android:id="@+id/rule_numbers"
        android:layout_width="match_parent"
+       android:layout_below="@id/rule_space"
        android:layout_height="80dp"
-       android:layout_marginTop="30dp"
+       android:layout_marginTop="10dp"
        android:orientation="horizontal">
 
        <TextView
@@ -51,16 +55,17 @@
            android:textColor="?android:attr/colorPressedHighlight"
            android:fontFamily="casual"
            />
-
-
    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:id="@+id/something"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="140dp"
         android:layout_height="50dp"
-        android:layout_marginTop="110dp"
         android:layout_alignParentLeft="true"
+        android:layout_below="@id/rule_numbers"
         android:orientation="horizontal">
+
         <TextView
             android:text="2"
             android:layout_width="30dp"
@@ -68,7 +73,8 @@
             android:id="@+id/textView111"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:textSize="36sp" />
+            android:textSize="36sp"
+            android:textColor="@android:color/background_dark" />
         <TextView
             android:text="3"
             android:layout_width="30dp"
@@ -76,7 +82,8 @@
             android:id="@+id/textView112"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:textSize="36sp"  />
+            android:textSize="36sp"
+            android:textColor="@android:color/background_dark" />
         <TextView
             android:text="4"
             android:layout_width="30dp"
@@ -85,7 +92,7 @@
             android:layout_marginLeft="10dp"
             android:textSize="36sp"
             android:id="@+id/textView113"
-             />
+            android:textColor="@android:color/background_dark" />
 
         <TextView
             android:text="5"
@@ -94,7 +101,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:textSize="36sp"
-            android:id="@+id/textView114" />
+            android:id="@+id/textView114"
+            android:textColor="@android:color/background_dark" />
 
         <TextView
             android:text="7"
@@ -103,7 +111,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:textSize="36sp"
-            android:id="@+id/textView115" />
+            android:id="@+id/textView115"
+            android:textColor="@android:color/background_dark" />
 
         <TextView
             android:text="9"
@@ -112,7 +121,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:textSize="36sp"
-            android:id="@+id/textView116" />
+            android:id="@+id/textView116"
+            android:textColor="@android:color/background_dark" />
 
         <TextView
             android:text="6"
@@ -121,7 +131,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:textSize="36sp"
-            android:id="@+id/textView117" />
+            android:id="@+id/textView117"
+            android:textColor="@android:color/background_dark" />
 
 
         <TextView
@@ -131,7 +142,8 @@
             android:id="@+id/textView118"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:textSize="36sp"  />
+            android:textSize="36sp"
+            android:textColor="@android:color/background_dark" />
         <TextView
             android:text="8"
             android:layout_width="30dp"
@@ -139,7 +151,8 @@
             android:id="@+id/textView119"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:textSize="36sp"  />
+            android:textSize="36sp"
+            android:textColor="@android:color/background_dark" />
 
 
 
@@ -150,20 +163,22 @@
             android:id="@+id/textView120"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:textSize="36sp"
+            android:textColor="@android:color/background_dark" />
 
-            android:textSize="36sp"  />
-
-</LinearLayout>
+    </LinearLayout>
 
 
 
 
     <LinearLayout
+        android:id="@+id/dsst_answer"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_marginTop="160dp"
+        android:layout_below="@id/something"
         android:orientation="horizontal"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="140dp">
         <TextView
             android:text="~"
             android:layout_width="30dp"
@@ -278,10 +293,11 @@
 
 
     <LinearLayout
+        android:id="@+id/click_symb1"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginTop="240dp"
+        android:layout_below="@id/dsst_answer"
         android:layout_alignParentLeft="true"
         >
         <TextView
@@ -291,14 +307,14 @@
             android:id="@+id/textView168"
             android:layout_centerVertical="true"
             android:layout_marginLeft="180dp"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:textColor="@android:color/background_dark" />
 
         <TextView
             android:text="b"
             android:layout_width="30dp"
             android:layout_height="50dp"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:id="@+id/textView169"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
@@ -308,7 +324,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView166"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:textColor="@android:color/background_dark" />
@@ -318,7 +334,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView167"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:textColor="@android:color/background_dark" />
@@ -328,19 +344,20 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView170"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:textColor="@android:color/background_dark" />
 
 
-</LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="290dp"
+    </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/click_symb2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/click_symb1"
         android:layout_alignParentLeft="true">
 
         <TextView
@@ -348,7 +365,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView171"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="180dp"
             android:textColor="@android:color/background_dark" />
@@ -357,7 +374,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView172"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:textColor="@android:color/background_dark" />
@@ -367,7 +384,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView173"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:textColor="@android:color/background_dark" />
@@ -377,7 +394,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView174"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:textColor="@android:color/background_dark" />
@@ -386,7 +403,7 @@
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView175"
-            android:textSize="36sp"
+            android:textSize="30sp"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:textColor="@android:color/background_dark" />
