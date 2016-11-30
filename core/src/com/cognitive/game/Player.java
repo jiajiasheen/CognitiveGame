@@ -303,5 +303,4 @@ public class Player extends Actor {
         up = true;
         down = true;
     }
-
 }

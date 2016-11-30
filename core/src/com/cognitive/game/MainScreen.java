@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
@@ -48,6 +49,7 @@ public class MainScreen extends ScreenAdapter {
 
     //barriers regions
     private boolean[][] barriers;
+    private SpriteBatch spriteBatch;
 
     @Override
     public void show() {
@@ -57,9 +59,9 @@ public class MainScreen extends ScreenAdapter {
 
         barriers = new boolean[50][80];
 
-        font = new BitmapFont(Gdx.files.internal("fonts/text.fnt"));
+        InstructionDisplay instr = new InstructionDisplay();
 
-        setWindow();
+        //setWindow();
 
         Gdx.input.setInputProcessor(stage);
 
@@ -82,6 +84,7 @@ public class MainScreen extends ScreenAdapter {
         stage.addActor(myActor.imgButtonR);
         stage.addActor(myActor.imgButtonD);
         stage.addActor(myActor.imgButtonU);
+        stage.addActor(instr);
         //stage.addActor(dialogWindow);
 
         //tiledMapRenderer.setView(camera);
@@ -119,6 +122,7 @@ public class MainScreen extends ScreenAdapter {
             cg.setQuizScreen();
         }
     }
+
 
     private void setWindow(){
         TextureRegionDrawable WindowDrawable = new TextureRegionDrawable(new TextureRegion(new Texture(Gdx.files.internal("badlogic.jpg"))));
