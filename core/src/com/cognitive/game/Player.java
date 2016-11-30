@@ -3,6 +3,7 @@ package com.cognitive.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
@@ -62,6 +63,8 @@ public class Player extends Actor {
     private int ITEM_FRAME_ROWS = 30;
 
     private TextureRegion diamond;
+    private TextureRegion gold;
+
 
     public int diamondN;
 
@@ -76,6 +79,8 @@ public class Player extends Actor {
     public int which_box;
     private boolean[] box_opened;
     private boolean[][] barriers;
+
+    private BitmapFont font;
 
     public Player(Stage stage, int[][] barelRegion, float[] player_pos, boolean[] box_opened, boolean[][] barriers){
 
@@ -94,6 +99,12 @@ public class Player extends Actor {
 
         //Diamond
         diamond = TextureRegion.split(di_img, di_img.getWidth() / ITEM_FRAME_COLS, di_img.getHeight() / ITEM_FRAME_ROWS)[15][1];
+
+        //Gold
+        gold = TextureRegion.split(di_img, di_img.getWidth() / ITEM_FRAME_COLS, di_img.getHeight() / ITEM_FRAME_ROWS)[15][7];
+
+        font = new BitmapFont(Gdx.files.internal("fonts/text.fnt"));
+        font.getData().setScale(0.5f);
 
         //split actor texture
         TextureRegion[][] tmp = TextureRegion.split(texture, texture.getWidth() / FRAME_COLS, texture.getHeight() / FRAME_ROWS);
@@ -203,6 +214,7 @@ public class Player extends Actor {
         currentFrame = walkFrames[face_dir * 3 + step];
         batch.draw(currentFrame, actorX, actorY);
         drawDiamond(batch);
+        drawGold(batch);
     }
 
     @Override
@@ -282,6 +294,12 @@ public class Player extends Actor {
         for(int i = 0;i < diamondN;i++){
             batch.draw(diamond, actorX + 550 - i * 45 , actorY - 200);
         }
+    }
+
+    private void drawGold(Batch batch){
+        batch.draw(gold, actorX - 460, actorY + 390);
+        String score = "10";
+        font.draw(batch, "X " + score, actorX - 400, actorY + 430);
     }
 
     private void checkMovable(float x, float y){
