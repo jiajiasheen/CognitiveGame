@@ -24,7 +24,7 @@ public class CognitiveGame extends Game {
         void onStartQuizActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged, int coins);
         void onStartVisualActivity(int n, float[] player_pos, boolean[] box_opened, boolean logged, int coins);
         void onStartDSSTActivity(float[] player_pos, boolean[] box_opened, boolean logged, int coins);
-        void onStartEndActivity();
+        void onStartEndActivity(int coins);
     }
 
     public static MyGameCallBack myGameCallBack;

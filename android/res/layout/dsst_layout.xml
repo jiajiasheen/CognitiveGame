@@ -10,7 +10,7 @@
         android:orientation="horizontal"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/rule_space">
 
         <TextView
@@ -294,6 +294,7 @@
 
     <LinearLayout
         android:id="@+id/click_symb1"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -302,6 +303,7 @@
         >
         <TextView
             android:text="a"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView168"
@@ -312,6 +314,7 @@
 
         <TextView
             android:text="b"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:textSize="30sp"
@@ -321,6 +324,7 @@
             android:textColor="@android:color/background_dark" />
         <TextView
             android:text="c"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView166"
@@ -331,6 +335,7 @@
 
         <TextView
             android:text="d"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView167"
@@ -341,6 +346,7 @@
 
         <TextView
             android:text="e"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView170"
@@ -358,10 +364,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/click_symb1"
+        android:layout_marginTop="5dp"
         android:layout_alignParentLeft="true">
 
         <TextView
             android:text="f"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView171"
@@ -371,6 +379,7 @@
             android:textColor="@android:color/background_dark" />
         <TextView
             android:text="g"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView172"
@@ -381,6 +390,7 @@
 
         <TextView
             android:text="h"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView173"
@@ -391,6 +401,7 @@
 
         <TextView
             android:text="i"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView174"
@@ -400,6 +411,7 @@
             android:textColor="@android:color/background_dark" />
         <TextView
             android:text="j"
+            android:background="@android:color/darker_gray"
             android:layout_width="30dp"
             android:layout_height="50dp"
             android:id="@+id/textView175"

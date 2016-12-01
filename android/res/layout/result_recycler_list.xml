@@ -34,16 +34,5 @@
             android:id="@+id/item_result"/>
 
 
-
-
-
-
-
-
     </LinearLayout>
-
-
-
-
-
 </android.support.v7.widget.CardView>

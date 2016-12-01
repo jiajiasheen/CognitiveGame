@@ -8,12 +8,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 public class EndActivity extends Activity {
+    public static int coins_final;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
-
+        coins_final = getIntent().getIntExtra("Coins", 0);
         Button end = (Button) findViewById(R.id.end_btn);
         ImageButton resultBtn = (ImageButton) findViewById(R.id.result_btn) ;
 

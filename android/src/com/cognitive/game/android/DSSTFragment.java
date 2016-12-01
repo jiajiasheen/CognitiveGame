@@ -6,6 +6,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.AlertDialog;
@@ -33,6 +34,8 @@ public class DSSTFragment extends Fragment {
     private TextView[] selection = new TextView[10];
     final int SPLASH_TIME_OUT = 10000;
     public String  finalAccuracy;
+    private int soundTemp;
+    private MediaPlayer mediaPlayer;
 
     public int[] testNumArray = new QuestionRandomGenerator().generator(10);
     public ArrayList<Integer> accCheck = new ArrayList<Integer>();
@@ -241,6 +244,10 @@ public class DSSTFragment extends Fragment {
                 }
             }
         }
+        if (counterCorr >= 3){
+            DSSTActivity.coins = DSSTActivity.coins + 10;
+        }
+        soundTemp = counterCorr;
         accuracy = "You Got " + counterCorr + " Correct" + " , " + counterFal + " Wrong ";
         return accuracy;
     }
@@ -251,8 +258,8 @@ public class DSSTFragment extends Fragment {
         //AndroidLauncher.finalRes.put("DSST", finalAccuracy);
         //AndroidLauncher.finalRes.add("Digital Symbol Substitution Test");
         //AndroidLauncher.finalRes.add("Accuracy: " + finalAccuracy);
-        AndroidLauncher.finalResTit.add("Digital Symbol Substitution Test");
-        AndroidLauncher.finalResVal.add("Accuracy: " + finalAccuracy);
+        AndroidLauncher.finalResTit.add("Digital Symbol Substitution Test " + "Difficulty Level: " + "Hard");
+        AndroidLauncher.finalResVal.add(finalAccuracy);
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener(){
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -263,6 +270,12 @@ public class DSSTFragment extends Fragment {
                 ft.replace(R.id.main_interface, mst);
                 ft.commit();
                 */
+                if (soundTemp >= 3){
+
+                    mediaPlayer = MediaPlayer.create(getActivity(), R.raw.coin_collect);
+                    mediaPlayer.setLooping(false);
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                 intent.putExtra("Player",DSSTActivity.player_pos_dsst);
                 intent.putExtra("Box", DSSTActivity.box_opened_dsst);
@@ -277,11 +290,12 @@ public class DSSTFragment extends Fragment {
     }
     private void onCreateIns(Context context){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("DSST Instruction");
-        builder.setMessage("Digital Symbol Substitution Test: 0 -> ~, 1 -> !, 2 -> @, " +
-                "3 -> #, 4 -> $, 5 -> %, 6 -> ^, 7 -> {, 8 -> *, 9 -> " +
+        builder.setTitle("Digital Symbol Substitution Test");
+        builder.setMessage("DSST Rule: 0 = ~  1 = !  2 = @  " +
+                "3 = #  4 = $  5 = %  6 = ^  7 = {  8 = *  9 = " +
                 "(      You have 10 seconds once started");
-        builder.setPositiveButton("Ready", new DialogInterface.OnClickListener() {
+
+        builder.setPositiveButton("START", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 new Handler().postDelayed(new Runnable(){

@@ -7,6 +7,7 @@ import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -34,6 +35,8 @@ public class QuizFragment extends Fragment{
         private View resultView;
         private long startTime;
         private long consumingTime;
+        private String temp;
+        private MediaPlayer mediaPlayer;
 
         //private int hour_left = 5;
 
@@ -129,14 +132,16 @@ public class QuizFragment extends Fragment{
 
         private void FinishQuiz(){
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("Summary of this quiz");
+            builder.setTitle("Summary");
             builder.setMessage(correct.toString() + " correct among " + (numbers.length - nBack) + "" + "  time consuming: " + consumingTime / 1000 + " seconds");
-            //AndroidLauncher.finalRes.put(String.valueOf(nBack) + "Back",
-                    //correct.toString() + " / " + (numbers.length - nBack) + "" + "  time consuming: " + consumingTime / 1000 + " seconds");
-            //AndroidLauncher.finalRes.add(String.valueOf(nBack) + "Back");
-            //AndroidLauncher.finalRes.add(correct.toString() + "/" + (numbers.length - nBack) + "  time consuming: " + consumingTime / 1000 + " seconds");
-            AndroidLauncher.finalResTit.add(String.valueOf(nBack) + "Back");
-            AndroidLauncher.finalResVal.add(correct.toString() + "/" + (numbers.length - nBack) + "  time consuming: " + consumingTime / 1000 + " seconds");
+            if (nBack == 3){
+                temp = "Hard";
+            }
+            else{
+                temp = "Normal";
+            }
+            AndroidLauncher.finalResTit.add(String.valueOf(nBack) + " Back  " + " Difficulty Level: " + temp);
+            AndroidLauncher.finalResVal.add("Accuracy: " + correct.toString() + "/" + (numbers.length - nBack) + "  time consuming: " + consumingTime / 1000 + " seconds");
             builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
@@ -153,12 +158,18 @@ public class QuizFragment extends Fragment{
                         ft.commit();
                     }
                     else{
-
+                        if (nBack == 3 && correct > 5){
+                            QuizActivity.coins_quiz = QuizActivity.coins_quiz + 10;
+                            mediaPlayer = MediaPlayer.create(getActivity(), R.raw.coin_collect);
+                            mediaPlayer.setLooping(false);
+                            mediaPlayer.start();
+                        }
 
                         Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                         intent.putExtra("Player", QuizActivity.player_pos);
                         intent.putExtra("Box", QuizActivity.box_opened);
                         intent.putExtra("Logged", QuizActivity.logged);
+                        intent.putExtra("Coins", QuizActivity.coins_quiz);
                         startActivity(intent);
                         getActivity().finish();
 

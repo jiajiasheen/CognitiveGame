@@ -20,6 +20,7 @@ public class QuizActivity extends Activity {
     public static float[] player_pos;
     public static boolean[] box_opened;
     public static boolean logged;
+    public static int coins_quiz;
     private MediaPlayer mediaPlayer;
 
     @Override
@@ -34,6 +35,7 @@ public class QuizActivity extends Activity {
         player_pos = getIntent().getFloatArrayExtra("Player");
         box_opened = getIntent().getBooleanArrayExtra("Box");
         logged = getIntent().getBooleanExtra("Logged", true);
+        coins_quiz = getIntent().getIntExtra("Coins", 0);
 
         time_consump_list = new ArrayList<>();
         accuracy_list = new ArrayList<>();

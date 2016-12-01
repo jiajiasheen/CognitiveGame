@@ -16,6 +16,7 @@ public class VisualActivity extends Activity {
     public static float[] player_pos_visual;
     public static boolean[] box_opened_visual;
     public static boolean logged;
+    public static int coins_visual;
     private MediaPlayer mediaPlayer;
 
     @Override
@@ -29,6 +30,7 @@ public class VisualActivity extends Activity {
         player_pos_visual = getIntent().getFloatArrayExtra("Player");
         box_opened_visual = getIntent().getBooleanArrayExtra("Box");
         logged = getIntent().getBooleanExtra("Logged", true);
+        coins_visual = getIntent().getIntExtra("Coins", 0);
         IMAGECOUNTER = extra;
         if(savedInstanceState == null){
             FragmentManager fragmentManager = getFragmentManager();

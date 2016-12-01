@@ -6,7 +6,7 @@
     <string name="login">Welcome</string>
     <string name="brief_story">The brave traveler, trapped in a cave with a sparkling camp fire. 5 hours to go until dawn,
     be careful about the monsters in the darkness.</string>
-    <string name="monster_query">You will be awarded a key by finishing this quiz</string>
+    <string name="monster_query">You will be awarded a ruby by finishing this quiz</string>
     <string name="query_hints">   </string>
     <string name="hour_hints">%d hours before dawn</string>
     <string name="ending_question_number">Question %d Accuracy</string>

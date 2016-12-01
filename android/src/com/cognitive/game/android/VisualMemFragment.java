@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,8 @@ public class VisualMemFragment extends Fragment {
     private ImageView[] img = new ImageView[15];
     private Integer[][] qus = new Integer[4][5];
     private Button readyBtn, aBtn, bBtn, cBtn;
+    private String temp;
+    private MediaPlayer mediaPlayer;
     private int[] resource ={R.drawable.mc1, R.drawable.mc2, R.drawable.mc3, R.drawable.mc4, R.drawable.mc5,
             R.drawable.mc6,R.drawable.mc7,R.drawable.mc8,R.drawable.mc9,R.drawable.mc10};
 
@@ -36,6 +40,12 @@ public class VisualMemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         resultView = inflater.inflate(R.layout.visualmem_layout, container, false);
         imageCounter = VisualActivity.IMAGECOUNTER;
+        if (imageCounter == 5){
+            temp = "Hard";
+        }
+        else{
+            temp = "Normal";
+        }
 /*
         img1 = (ImageView) resultView.findViewById(R.id.visual1);
         img2 = (ImageView) resultView.findViewById(R.id.visual2);
@@ -154,12 +164,20 @@ public class VisualMemFragment extends Fragment {
                 //AndroidLauncher.finalRes.put("Visual Memory Test", "Correct");
                 //AndroidLauncher.finalRes.add("Visual Memory Test");
                 //AndroidLauncher.finalRes.add("Correct");
-                AndroidLauncher.finalResTit.add("Visual Memory Test");
+                AndroidLauncher.finalResTit.add("Visual Memory Test" + " Difficulty Level: " + temp);
                 AndroidLauncher.finalResVal.add("Correct");
+                if (VisualActivity.IMAGECOUNTER == 5) {
+                    VisualActivity.coins_visual = VisualActivity.coins_visual + 10;
+
+                    mediaPlayer = MediaPlayer.create(getActivity(), R.raw.coin_collect);
+                    mediaPlayer.setLooping(false);
+                    mediaPlayer.start();
+                }
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                 intent.putExtra("Player",VisualActivity.player_pos_visual);
                 intent.putExtra("Box", VisualActivity.box_opened_visual);
                 intent.putExtra("Logged", VisualActivity.logged);
+                intent.putExtra("Coins", VisualActivity.coins_visual);
                 startActivity(intent);
                 getActivity().finish();
             }
@@ -183,12 +201,13 @@ public class VisualMemFragment extends Fragment {
                 //AndroidLauncher.finalRes.put("Visual Memory Test", "Wrong");
                 //AndroidLauncher.finalRes.add("Visual Memory Test");
                 //AndroidLauncher.finalRes.add("Correct");
-                AndroidLauncher.finalResTit.add("Visual Memory Test");
+                AndroidLauncher.finalResTit.add("Visual Memory Test"+ " Difficulty Level: " + temp);
                 AndroidLauncher.finalResVal.add("Wrong");
                 Intent intent = new Intent (getActivity(), AndroidLauncher.class);
                 intent.putExtra("Player",VisualActivity.player_pos_visual);
                 intent.putExtra("Box", VisualActivity.box_opened_visual);
                 intent.putExtra("Logged", VisualActivity.logged);
+                intent.putExtra("Coins", VisualActivity.coins_visual);
                 startActivity(intent);
                 getActivity().finish();
             }

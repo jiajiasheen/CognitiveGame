@@ -21,7 +21,7 @@
         android:id="@+id/end_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Finish Adventure"
+        android:text="Finish"
         android:layout_below="@id/end_hint"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"/>

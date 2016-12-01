@@ -42,6 +42,7 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
         camera.position.set(Gdx.graphics.getWidth() / 2, Gdx.graphics.getHeight() / 2, 0);
 
         InstructionDisplay moreGold = new InstructionDisplay("sans", 2f, "MAKE YOUR CHOICE", stage.getWidth() / 2 - 600, stage.getHeight() / 2 + 500);
+        InstructionDisplay moreGold2 = new InstructionDisplay("sans", 2f, "HARD or EASY", stage.getWidth() / 2 - 450, stage.getHeight() / 2 + 300);
         //InstructionDisplay moreDif = new InstructionDisplay("sans", 2f, "Much Harder The Question Inside It", stage.getWidth() / 2 - 700, stage.getHeight() / 2 + 350);
         //InstructionDisplay moreLoss = new InstructionDisplay("sans", 2f, "Even Less Gold If Answer Is Incorrect", stage.getWidth() / 2 - 700, stage.getHeight() / 2 + 150);
 
@@ -115,6 +116,7 @@ public class QuizScreen extends ApplicationAdapter implements Screen {
         easy_level.setPosition(stage.getWidth() / 2 + ez_box.getWidth() - 180, stage.getHeight() / 2 - 300);
 
         stage.addActor(moreGold);
+        stage.addActor(moreGold2);
         stage.addActor(hard_level);
         stage.addActor(easy_level);
         Gdx.input.setInputProcessor(stage);
