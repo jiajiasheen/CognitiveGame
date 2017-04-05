@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:htext="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/quiz_instruction"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:src="@drawable/ic_live_help_black_24dp" />
+
+    <RelativeLayout
+        android:id="@+id/title_space"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="65dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:id="@+id/quiz_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monster_query"
+            android:textSize="24sp"
+            android:textStyle="normal|bold"
+            android:textColor="@android:color/holo_green_dark"
+            android:textAlignment="center"
+            android:paddingLeft="20sp"
+            android:paddingRight="20sp"
+            android:layout_centerInParent="true"
+            android:fontFamily="casual" />
+
+    </RelativeLayout>
+    <!--
+    <TextView
+        android:id="@+id/quiz_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/query_hints"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="20sp"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/background_dark"
+        android:gravity="fill_horizontal"
+        android:layout_below="@+id/title_space" />
+     -->
+
+    <RelativeLayout
+        android:id="@+id/number_space"
+        android:layout_width="match_parent"
+        android:layout_height="100sp"
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/title_space"
+        android:layout_alignParentLeft="true"
+        >
+        <TextView
+            android:id="@+id/N_Back_Number"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:textSize="75sp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textStyle="normal|bold" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="25dp">
+
+        <Button
+            android:id="@+id/Correct"
+            android:layout_width="120sp"
+            android:layout_height="50sp"
+            android:layout_gravity="center"
+            android:text="Correct"
+            android:layout_marginLeft="225dp"
+            android:visibility="invisible"
+            android:fontFamily="casual"
+            android:textColor="@android:color/holo_blue_light"
+            android:textStyle="normal|bold"
+            android:background="@android:color/transparent" />
+
+        <Button
+            android:id="@+id/Wrong"
+            android:layout_width="120sp"
+            android:text="Wrong"
+            android:layout_height="50sp"
+            android:layout_toRightOf="@+id/Correct"
+            android:visibility="invisible"
+            android:fontFamily="casual"
+            android:textColor="@android:color/holo_blue_light"
+            android:textStyle="normal|bold"
+            android:background="@android:color/transparent" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next Number"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:textColor="@android:color/holo_blue_light"
+        android:fontFamily="casual"
+        android:textStyle="normal|bold"
+        android:background="@android:color/transparent" />
+
+
+</RelativeLayout>
